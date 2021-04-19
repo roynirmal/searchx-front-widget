@@ -129,6 +129,13 @@ class Search extends React.Component {
                     },
                 },
 
+                // QHW previous query click
+                'qhw-click-item': {
+                    selector: '.QueryHistory .tl .list .item',
+                    event: 'click',
+                    name: 'QHW_QUERY_CLICK',
+                },
+
 
             },
         };
