@@ -101,10 +101,7 @@ class Search extends React.Component {
                     }
                 },
 
-
-
-
-
+                // QHW box hover in/out
                 'qhw-hover': {
                     selector: '.QueryHistory .tl',
                     event: 'mouseHover',
@@ -118,15 +115,16 @@ class Search extends React.Component {
                     },
                 },
 
+                // QHW previous query hover in/out
                 'qhw-hover-item': {
                     selector: '.QueryHistory .tl .list .item span a',
                     event: 'mouseHover',
                     properties: {
                         mouseenter: {
-                            name: 'QHW_ITEM_MOUSE_ENTER',
+                            name: 'QHW_QUERY_MOUSE_ENTER',
                         },
                         mouseleave: {
-                            name: 'QHW_ITEM_MOUSE_LEAVE',
+                            name: 'QHW_QUERY_MOUSE_LEAVE',
                         }
                     },
                 },
