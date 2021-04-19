@@ -41,7 +41,6 @@ class Search extends React.Component {
         //     Chat();
         // };
         document.addEventListener('visibilitychange', this.handleVisibilityChange);
-        console.log(window);
     }
 
     componentWillUnmount() {
@@ -58,7 +57,7 @@ class Search extends React.Component {
     }
 
     render() {
-       
+        console.log(window);
         return (
             <div className="Search">
                 {this.checkDevice()}
