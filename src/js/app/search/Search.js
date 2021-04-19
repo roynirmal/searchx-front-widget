@@ -72,18 +72,35 @@ class Search extends React.Component {
                 groupId: AccountStore.getGroupId(),
             },
             trackingConfiguration: {
-                // 'qhw-hover': {
-                //     selector: '.QueryHistory .tl',
-                //     event: 'mouseHover',
-                //     properties: {
-                //         mouseenter: {
-                //             name: 'QHW_MOUSE_ENTER',
-                //         },
-                //         mouseleave: {
-                //             name: 'QHW_MOUSE_LEAVE',
-                //         }
-                //     },
-                // },
+                // Form and query box
+                'query-box-focus': {
+                    selector: 'form input',
+                    event: 'focus',
+                    name: 'QUERY_BOX_FOCUS',
+                },
+
+                'query-box-blur': {
+                    selector: 'form input',
+                    event: 'blur',
+                    name: 'QUERY_BOX_BLUR',
+                },
+
+                
+
+
+
+                'qhw-hover': {
+                    selector: '.QueryHistory .tl',
+                    event: 'mouseHover',
+                    properties: {
+                        mouseenter: {
+                            name: 'QHW_MOUSE_ENTER',
+                        },
+                        mouseleave: {
+                            name: 'QHW_MOUSE_LEAVE',
+                        }
+                    },
+                },
 
                 'qhw-hover-item': {
                     selector: '.QueryHistory .tl .list .item span a',
@@ -98,11 +115,7 @@ class Search extends React.Component {
                     },
                 },
 
-                'query-box-focus': {
-                    selector: 'form input',
-                    event: 'focus',
-                    name: 'QUERY_BOX_FOCUS',
-                }
+
             },
         };
 
