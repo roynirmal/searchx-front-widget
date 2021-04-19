@@ -138,24 +138,25 @@ const SearchResults = function ({
                 {config.interface.timeIndicator && results.length > 0 &&
                 <div className="time"> {timeIndicator}</div>
                 }
-                {distributionOfLabour === "unbookmarkedSoft" &&
-                <div className="collapsedText">
-                    {/* <Button className="allCollapsedResultsButton" onClick={showAllCollapsedResults}
-                            disabled={allBookmarkedResultsShown}>
-                        Show all hidden results
-                    </Button> */}
-                    <Button variant="light" className="allCollapsedResultsButton" onClick={hideAllCollapsedResults}
-                            disabled={allBookmarkedResultsHidden}>
-                        Hide all saved results
-                    </Button>
-                </div>
+                {
+                // distributionOfLabour === "unbookmarkedSoft" &&
+                // <div className="collapsedText">
+                //     {/* <Button className="allCollapsedResultsButton" onClick={showAllCollapsedResults}
+                //             disabled={allBookmarkedResultsShown}>
+                //         Show all hidden results
+                //     </Button> */}
+                //     <Button variant="light" className="allCollapsedResultsButton" onClick={hideAllCollapsedResults}
+                //             disabled={allBookmarkedResultsHidden}>
+                //         Hide all saved results
+                //     </Button>
+                // </div>
                 }
                 <div className="list">
                     {list}
                 </div>
             </div>
 
-            {pagination}
+            {/* {pagination} */}
         </div>
     )
 };

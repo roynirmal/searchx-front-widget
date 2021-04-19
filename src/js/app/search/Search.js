@@ -64,16 +64,17 @@ class Search extends React.Component {
                 <SearchHeaderContainer timer={this.props.timer} statusbar={this.props.statusbar} showAccountInfo={this.props.showAccountInfo}/>
 
                 <div className="Content">
+                <QueryHistoryContainer collaborative={this.props.collaborative}/>
                     <div className="Main">
                         <div className="SearchResultsContainer">
                             <SearchResultsContainer/>
                         </div>
                     </div>
 
-                    <div className="Side">
-                        <QueryHistoryContainer collaborative={this.props.collaborative}/>
-                        <BookmarkContainer collaborative={this.props.collaborative}/>
-                    </div>
+                    {/* <div className="Side"> */}
+                        {/* <QueryHistoryContainer collaborative={this.props.collaborative}/> */}
+                        {/* <BookmarkContainer collaborative={this.props.collaborative}/> */}
+                    {/* </div> */}
 
                     {this.props.taskDescription && (
                         <div className="Side">
@@ -81,6 +82,7 @@ class Search extends React.Component {
                         </div>
                     )}
                 </div>
+               
                 <Chat/>
                 <div className="text-center">
                     <p className="Footer">

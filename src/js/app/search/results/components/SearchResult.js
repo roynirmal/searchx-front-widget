@@ -44,7 +44,7 @@ const SearchResult = function ({
         index: index,
         metadata: formatMetadata(result.metadata),
         bookmarkButton: bookmarkButton,
-        excludeButton: excludeButton,
+        // excludeButton: excludeButton,
         urlClickHandler: urlClickHandler,
         hideCollapsedResultsHandler: hideCollapsedResultsHandler,
         isCollapsible: isCollapsible,
