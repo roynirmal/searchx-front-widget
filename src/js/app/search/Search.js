@@ -72,7 +72,18 @@ class Search extends React.Component {
                 groupId: AccountStore.getGroupId(),
             },
             trackingConfiguration: {
-
+                'qhw-hover': {
+                    selector: '.QueryHistory tl',
+                    event: 'mouseHover',
+                    properties: {
+                        mouseover: {
+                            name: 'QHW_MOUSE_IN',
+                        },
+                        mouseout: {
+                            name: 'QHW_MOUSE_OUT',
+                        }
+                    },
+                }
             },
         };
 
