@@ -86,7 +86,7 @@ class Search extends React.Component {
                 },
 
                 'qhw-hover-item': {
-                    selector: '.QueryHistory .tl .list .item a',
+                    selector: '.QueryHistory .tl .list .item span a',
                     event: 'mouseHover',
                     properties: {
                         mouseenter: {
