@@ -12,6 +12,7 @@ import Chat from "./features/chat/Chat";
 import config from "../../config";
 import MobileDetect from 'mobile-detect';
 import Alert from "react-s-alert";
+import AccountStore from "../../../stores/AccountStore"
 
 class Search extends React.Component {
     constructor(props) {
@@ -67,7 +68,8 @@ class Search extends React.Component {
                 }
             },
             applicationSpecificData: {
-
+                userId: AccountStore.getUserId(),
+                groupId: AccountStore.getGroupId(),
             },
             trackingConfiguration: {
 
