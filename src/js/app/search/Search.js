@@ -75,6 +75,7 @@ class Search extends React.Component {
         };
 
         window.LogUI.init(configurationObject);
+        console.log(this.props);
     }
 
     componentWillUnmount() {
