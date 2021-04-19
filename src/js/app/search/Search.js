@@ -85,7 +85,13 @@ class Search extends React.Component {
                     name: 'QUERY_BOX_BLUR',
                 },
 
-                
+                'form-submission': {
+                    selector: 'form',
+                    event: 'formSubmission',
+                    name: 'QUERY_SUBMISSION',
+                }
+
+
 
 
 
