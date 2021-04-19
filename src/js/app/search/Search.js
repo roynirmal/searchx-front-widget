@@ -76,11 +76,11 @@ class Search extends React.Component {
                     selector: '.QueryHistory .tl',
                     event: 'mouseHover',
                     properties: {
-                        mouseover: {
-                            name: 'QHW_MOUSE_IN',
+                        mouseenter: {
+                            name: 'QHW_MOUSE_ENTER',
                         },
-                        mouseout: {
-                            name: 'QHW_MOUSE_OUT',
+                        mouseleave: {
+                            name: 'QHW_MOUSE_LEAVE',
                         }
                     },
                 }
