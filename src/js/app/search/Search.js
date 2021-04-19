@@ -49,7 +49,29 @@ class Search extends React.Component {
 
     startLogUI() {
         let configurationObject = {
+            logUIConfiguration: {
+                endpoint: 'ws://logui.ewi.tudelft.nl/ws/endpoint/',
+                authorisationToken: 'eyJ0eXBlIjoibG9nVUktYXV0aG9yaXNhdGlvbi1vYmplY3QiLCJhcHBsaWNhdGlvbklEIjoiNjg2OGRkZDEtODNhYy00NTJlLTk2ZDEtNjJkZDg5OWJlNTUzIiwiZmxpZ2h0SUQiOiI0NWJlNGFkNS0yNDQ0LTRlOTItYTA0My05ZmQ0YmZhYWI4ZmUifQ:1lYafK:1cG6yM47tk2vv1hSuhuAsxVYZbDGDBvenrjpvbPKjwI',
+                verbose: true,
 
+                browserEvents: {
+                    blockEventBubbling: true,
+                    eventsWhileScrolling: true,
+                    URLChanges: true,
+                    contextMenu: true,
+                    pageFocus: true,
+                    trackCursor: false,
+                    cursorUpdateFrequency: 2000,
+                    cursorLeavingPage: true,
+                    pageResize: true,
+                }
+            },
+            applicationSpecificData: {
+
+            },
+            trackingConfiguration: {
+
+            },
         };
 
         window.LogUI.init(configurationObject);
