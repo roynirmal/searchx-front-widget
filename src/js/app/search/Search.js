@@ -83,6 +83,19 @@ class Search extends React.Component {
                             name: 'QHW_MOUSE_LEAVE',
                         }
                     },
+                },
+
+                'qhw-hover-item': {
+                    selector: '.QueryHistory .tl .list .item a',
+                    event: 'mouseHover',
+                    properties: {
+                        mouseenter: {
+                            name: 'QHW_ITEM_MOUSE_ENTER',
+                        },
+                        mouseleave: {
+                            name: 'QHW_ITEM_MOUSE_LEAVE',
+                        }
+                    },
                 }
             },
         };
