@@ -96,7 +96,7 @@ class Search extends React.Component {
                             name: 'QHW_ITEM_MOUSE_LEAVE',
                         }
                     },
-                }
+                },
             },
         };
 
