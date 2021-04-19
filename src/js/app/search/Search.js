@@ -89,6 +89,16 @@ class Search extends React.Component {
                     selector: 'form',
                     event: 'formSubmission',
                     name: 'QUERY_SUBMISSION',
+                    properties: {
+                        includeValues: [
+                            {
+                                nameForLog: 'submittedQuery',
+                                sourcer: 'elementProperty',
+                                selector: 'form input',
+                                lookFor: 'value',
+                            }
+                        ]
+                    }
                 },
 
 
