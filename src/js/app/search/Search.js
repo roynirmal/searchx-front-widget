@@ -97,11 +97,16 @@ class Search extends React.Component {
                         }
                     },
                 },
+
+                'query-box-focus': {
+                    selector: 'form input',
+                    event: 'focus',
+                    name: 'QUERY_BOX_FOCUS',
+                }
             },
         };
 
         window.LogUI.init(configurationObject);
-        console.log(this.props);
     }
 
     componentWillUnmount() {
