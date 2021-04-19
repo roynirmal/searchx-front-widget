@@ -41,7 +41,7 @@ class Search extends React.Component {
         //     Chat();
         // };
         document.addEventListener('visibilitychange', this.handleVisibilityChange);
-        console.log(window.LogUI);
+        console.log(window);
     }
 
     componentWillUnmount() {
