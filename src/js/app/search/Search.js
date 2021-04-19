@@ -127,6 +127,13 @@ class Search extends React.Component {
                             name: 'QHW_QUERY_MOUSE_LEAVE',
                         }
                     },
+                    metadata: [
+                        {
+                            logAs: 'QHW_QUERY_TEXT',
+                            source: 'elementAttribute',
+                            find: 'data-query'
+                        }
+                    ],
                 },
 
                 // QHW previous query click
