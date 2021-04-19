@@ -44,7 +44,6 @@ export default class SearchResultsContainer extends React.Component {
 
     componentWillMount() {
         SearchStore.addChangeListener(this._onChange);
-        console.log('results are displayed!');
     }
 
     componentWillUnmount() {
