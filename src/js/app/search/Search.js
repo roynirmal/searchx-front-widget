@@ -73,7 +73,7 @@ class Search extends React.Component {
             },
             trackingConfiguration: {
                 'qhw-hover': {
-                    selector: '.QueryHistory tl',
+                    selector: '.QueryHistory .tl',
                     event: 'mouseHover',
                     properties: {
                         mouseover: {
