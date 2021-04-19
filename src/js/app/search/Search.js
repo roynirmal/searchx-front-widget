@@ -41,7 +41,18 @@ class Search extends React.Component {
         //     Chat();
         // };
         document.addEventListener('visibilitychange', this.handleVisibilityChange);
-        console.log(window.hasOwnProperty('LogUI'));
+
+        if (window.hasOwnProperty('LogUI')) {
+            this.startLogUI();
+        }
+    }
+
+    startLogUI() {
+        let configurationObject = {
+
+        };
+
+        window.LogUI.start(configurationObject);
     }
 
     componentWillUnmount() {
@@ -55,6 +66,10 @@ class Search extends React.Component {
             element.parentElement.removeChild(element);
         };
         document.removeEventListener('visibilitychange', this.handleVisibilityChange, this.checkDevice);
+
+        if (window.hasOwnProperty('LogUI')) {
+            window.LogUI.stop();
+        }
     }
 
     render() {
