@@ -89,7 +89,7 @@ class Search extends React.Component {
                     selector: 'form',
                     event: 'formSubmission',
                     name: 'QUERY_SUBMISSION',
-                }
+                },
 
 
 
