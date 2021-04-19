@@ -52,7 +52,7 @@ class Search extends React.Component {
 
         };
 
-        window.LogUI.start(configurationObject);
+        window.LogUI.init(configurationObject);
     }
 
     componentWillUnmount() {
@@ -68,7 +68,9 @@ class Search extends React.Component {
         document.removeEventListener('visibilitychange', this.handleVisibilityChange, this.checkDevice);
 
         if (window.hasOwnProperty('LogUI')) {
-            window.LogUI.stop();
+            if (window.LogUI.isActive()) {
+                window.LogUI.stop();
+            }
         }
     }
 
