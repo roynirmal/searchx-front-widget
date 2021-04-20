@@ -91,10 +91,16 @@ class Search extends React.Component {
                     name: 'QUERY_BOX_BLUR',
                 },
 
+                'query-box-keypress': {
+                    selector: 'form input',
+                    event: 'keyup',
+                    name: 'QUERY_BOX_KEY',
+                },
+
                 'form-submission': {
                     selector: 'form',
                     event: 'formSubmission',
-                    name: 'QUERY_SUBMISSION',
+                    name: 'FORM_SUBMISSION',
                     properties: {
                         includeValues: [
                             {
