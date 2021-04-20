@@ -33,7 +33,7 @@ const SearchResult = function ({
             onClick={excludeClickHandler}
             stop={1} initialRating={initialExclude}
             title="Exclude result from future queries"
-            data-index={props.index}
+            data-index="55"
         />}
     </div>;
 
