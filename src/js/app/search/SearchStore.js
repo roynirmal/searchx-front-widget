@@ -332,7 +332,12 @@ const _search = (query, vertical, page) => {
                 session: localStorage.getItem("session-num")
             });
 
-            console.log('SEARCHY');
+            if (window.hasOwnProperty('LogUI') && window.LogUI.isActive()) {
+                window.LogUI.logCustomMessage({
+                    hello: 'world',
+                    query: state.query,
+                })
+            }
 
             SearchStore.emitChange();
             SessionActions.getQueryHistory();
