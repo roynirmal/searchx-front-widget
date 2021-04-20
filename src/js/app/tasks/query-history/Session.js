@@ -9,6 +9,7 @@ import {LoggerEventTypes} from '../../../utils/LoggerEventTypes';
 import AccountStore from "../../../stores/AccountStore";
 import IntroStore from "../../../stores/IntroStore";
 import Alert from "react-s-alert";
+import Timer from "../components/Timer";
 
 class Session extends React.PureComponent {
     constructor(props) {
@@ -25,10 +26,16 @@ class Session extends React.PureComponent {
     componentDidMount() {
         let td = "<h3> Your task </h3><p> We want you to search and find \
         relevant documents for the topic <b>Wildlife Extinction</b> in this \
-        task. </p>A brief description of the topic and what we mean by \
-        relevant document will  be shown on the right side of your screen. \
-        Read it carefully and then you can use our search engine to search\
-         for relevant documents.</p>";
+        task. </p><p>A few years ago, a debate arose about the conservation of the \
+        spotted owl in America, highlighting the U.S. efforts to prevent \
+        the extinction of wildlife species. What is not well known is the \
+        effort of other countries to prevent the demise of species native \
+        to their countries.  What other countries have begun efforts to \
+        prevent such declines? </p> <p><b>A relevant item will specify the country, the involved \
+        species, and steps taken to save the species.</b></p> <p>We will be giving bonuses to the \
+         participants that identify the most relevant documents, but only those. We do not expect you to find all relevant documents. \
+         Marking non-relevant documents will therefore hamper your chances of receiving a bonus.</p>" ;
+
         const variant = localStorage.getItem('variant');
         const tip_location = `.QueryHistory .${variant}`
         const introSteps = [
@@ -87,9 +94,9 @@ class Session extends React.PureComponent {
 
         const timer = (
             <div style={{marginTop: '10px', textAlign: 'center'}}>
-                {/* <Timer start={this.state.start} duration={constants.taskDuration} onFinish={this.onFinish} style={{fontSize: '2em'}} showRemaining={false}/> */}
+                <Timer start={this.state.start} duration={constants.taskDuration} onFinish={this.onFinish} style={{fontSize: '2em'}} showRemaining={false}/>
                 
-                <Link className={"btn btn-primary" } to={"/QHWPostTest/posttest"} role="button">
+                <Link className={"btn btn-primary" + (this.state.finished ? '' : ' disabled')} to={"/qhw/posttest"} role="button">
                         Finish
                 </Link>
             </div>
@@ -127,7 +134,7 @@ class Session extends React.PureComponent {
             <div>
                 <TaskedSession 
                 timer= {timer} 
-                taskDescription={taskDescription} 
+                // taskDescription={taskDescription} 
                 onSwitchPage={this.onSwitchPage}
                 lastSession={false} 
                 firstSession={false}/>
@@ -139,20 +146,10 @@ class Session extends React.PureComponent {
 
     onFinish() {
         // if (localStorage.session ==1):
-        let sessionNum = localStorage.getItem("session-num") || 0;
-        
-        
-        sessionNum++ 
-
-        localStorage.setItem("session-num", sessionNum);
-        if (sessionNum === 4 ){
-            this.setState({
-                finished: true
-            });;
-        } else {
-            this.props.history.push('/covidsearch/intermediatetest');
-        }
-        
+        localStorage.setItem("variant", "ur")
+        this.setState({
+            finished: true
+        });;
     }
     onLeave() {
         log(LoggerEventTypes.SEARCH_EXIT, {

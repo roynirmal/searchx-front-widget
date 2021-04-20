@@ -98,12 +98,12 @@ export class App extends React.Component {
                     <Route exact path="/simple/submit" component={SimpleSubmit}/>
                     <Route path="/simple/session" component={SimpleSession}/>
 
-                    <Route exact path="/sync" component={QHWRegister}/>
+                    <Route exact path="/qhw" component={QHWRegister}/>
                     <Route exact path="/disq" component={QHWDisqualified}/>
-                    {/* <Route exact path="/sync/pretest" component={SyncPreTest}/> */}
-                    {/* <Route exact path="/sync/intermediatetest" component={SyncIntermediateTests}/> */}
-                    <Route exact path="/QHWPostTest/posttest" component={QHWPostTest}/>
-                    <Route path="/sync/session" component={QHWSession}/>
+                    <Route exact path="/sync/pretest" component={SyncPreTest}/>
+                    <Route exact path="/sync/intermediatetest" component={SyncIntermediateTests}/>
+                    <Route exact path="/qhw/posttest" component={QHWPostTest}/>
+                    <Route path="/qhw/session" component={QHWSession}/>
 
                     <Route exact path="/covidnosearch" component={CovidNoSearchRegister}/>
                     <Route exact path="/disq" component={CovidNoSearchDisqualified}/>
