@@ -334,8 +334,10 @@ const _search = (query, vertical, page) => {
 
             if (window.hasOwnProperty('LogUI') && window.LogUI.isActive()) {
                 window.LogUI.logCustomMessage({
-                    hello: 'world',
+                    event: 'QUERY_RETURNED',
                     query: state.query,
+                    elapsedSearchTime: state.elapsedTime,
+                    provider: state.provider,
                 })
             }
 
