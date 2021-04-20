@@ -170,7 +170,7 @@ class Search extends React.Component {
                         {
                             nameForLog: 'COLLECTION_ID',
                             sourcer: 'elementAttribute',
-                            lookFor: 'data-collectionId',
+                            lookFor: 'data-collectionid',
                         }
                     ]
                 },
