@@ -162,6 +162,20 @@ class Search extends React.Component {
                     name: 'QHW_QUERY_CLICK',
                 },
 
+                // QHW scrolling
+                'qhw-scrolling': {
+                    selector: '.QueryHistory *',
+                    event: 'scrollable',
+                    properties: {
+                        scrollStart: {
+                            name: 'QHW_SCROLL_START',
+                        },
+                        scrollEnd: {
+                            name: 'QHW_SCROLL_END',
+                        },
+                    },
+                },
+
                 // Search result hover in/out
                 'result-hover': {
                     selector: '.SearchResults .list > div div.SearchResult',
