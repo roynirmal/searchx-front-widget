@@ -133,20 +133,41 @@ class Search extends React.Component {
                             name: 'QHW_QUERY_MOUSE_LEAVE',
                         }
                     },
-                    metadata: [
-                        {
-                            nameForLog: 'QUERY',
-                            sourcer: 'elementAttribute',
-                            lookFor: 'data-query',
-                        }
-                    ]
+                    // metadata: [
+                    //     {
+                    //         nameForLog: 'QUERY',
+                    //         sourcer: 'elementAttribute',
+                    //         lookFor: 'data-query',
+                    //     }
+                    // ]
                 },
 
                 // QHW previous query click
                 'qhw-click-item': {
-                    selector: '.QueryHistory .tl .list .item',
+                    selector: '.QueryHistory * .list .item',
                     event: 'click',
                     name: 'QHW_QUERY_CLICK',
+                },
+
+                // Search result hover in/out
+                'result-hover': {
+                    selector: '.SearchResult',
+                    event: 'mouseHover',
+                    properties: {
+                        mouseenter: {
+                            name: 'RESULT_MOUSE_ENTER',
+                        },
+                        mouseleave: {
+                            name: 'RESULT_MOUSE_LEAVE',
+                        }
+                    },
+                    // metadata: [
+                    //     {
+                    //         nameForLog: 'QUERY',
+                    //         sourcer: 'elementAttribute',
+                    //         lookFor: 'data-query',
+                    //     }
+                    // ]
                 },
 
 
