@@ -73,6 +73,12 @@ class Search extends React.Component {
             },
             trackingConfiguration: {
                 // Form and query box
+                'query-box-hoverin': {
+                    selector: 'form input',
+                    event: 'mouseenter',
+                    name: 'QUERY_BOX_MOUSE_ENTER',
+                },
+
                 'query-box-focus': {
                     selector: 'form input',
                     event: 'focus',
@@ -127,13 +133,6 @@ class Search extends React.Component {
                             name: 'QHW_QUERY_MOUSE_LEAVE',
                         }
                     },
-                    metadata: [
-                        {
-                            logAs: 'QHW_QUERY_TEXT',
-                            source: 'elementAttribute',
-                            find: 'data-query'
-                        }
-                    ],
                 },
 
                 // QHW previous query click
