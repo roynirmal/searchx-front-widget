@@ -70,11 +70,11 @@ export class App extends React.Component {
         });
 
         if(!isValidBrowser){
-        //    return (<div>
-        //        <h3>Your browser does not meet our requriement:
-        //            Google Chrome version 47 (or higher) and Mozilla Firefox version 50 (or higher).
-        //            Please upgrade your browser to take part in our study</h3>
-        //    </div>)
+           return (<div>
+               <h3>Your browser does not meet our requriement:
+                   Google Chrome version 47 (or higher) and Mozilla Firefox version 50 (or higher).
+                   Please upgrade your browser to take part in our study</h3>
+           </div>)
         } 
 
         let invalid = localStorage.getItem("invalid-user") || 0;
