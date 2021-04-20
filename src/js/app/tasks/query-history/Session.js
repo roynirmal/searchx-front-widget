@@ -23,11 +23,14 @@ class Session extends React.PureComponent {
     }
 
     componentDidMount() {
-        let td = '<h3> Your task </h3><p> We require to find information regarding an information need pertaining to COVID19. It will be shown on the right side of your screen. Read it carefully and then you can use our search engine to observe which queries gives the best set of documents. </p>';
-
-        // td += `Remember: there will be three intermittent tests. After searching for at least 20 minutes you can move on to the final test by clicking on the "To Final Test" button. 
-        // The documents you saved will be available to you when writing (in your own words) a short summary about the topic.`
-
+        let td = "<h3> Your task </h3><p> We want you to search and find \
+        relevant documents for the topic <b>Wildlife Extinction</b> in this \
+        task. </p>A brief description of the topic and what we mean by \
+        relevant document will  be shown on the right side of your screen. \
+        Read it carefully and then you can use our search engine to search\
+         for relevant documents.</p>";
+        const variant = localStorage.getItem('variant');
+        const tip_location = `.QueryHistory .${variant}`
         const introSteps = [
             {
                 element: '.Task',
@@ -40,29 +43,29 @@ class Session extends React.PureComponent {
             },
             {
                 element: '.SearchHeader',
-                intro: 'We want you to use our custom web search system SearchX to learn about the information need mentioned in the task description. Once you are satisfied with the results you obtained press the Next button to submit the two queries you found most useful for the corresponding information need.',
+                intro: 'We want you to use our custom web search system\
+                SearchX to learn about the information need mentioned in the \
+                task description. Once you are satisfied with the results you\
+                 obtained press the Next button to submit the documents you \
+                 found most useful for the corresponding information need.',
                 position: 'bottom-middle-aligned'
             },
             {
                 element: '.SearchHeader .form',
-                intro: 'Use SearchX to search for  publications, and other online sources to learn about the topic. '
+                intro: 'Use SearchX to search for  documents that are \
+                relevant to the topic'
             },
             {
-                element: '.QueryHistory',
+                element: tip_location,
                 intro: 'The query history shows your past search queries.',
                 position: 'top'
             },
             {
                 element: '.SearchResults',
-                intro: 'Save a resource that is useful by clicking on the yellow flag. Make sure to read the document and not just the snippet!',
-                position: 'top'
-            },
-            {
-                element: '.Bookmarks',
-                intro: 'The saved documents saved will appear here.',
+                intro: 'Save a resource that is useful by clicking on the \
+                yellow flag',
                 position: 'top'
             }
-
         ];     
         IntroStore.startIntro(introSteps, () => {
             const start = localStorage.getItem("timer-start") || Date.now();
@@ -70,8 +73,6 @@ class Session extends React.PureComponent {
             this.setState({
                 start: start
                 });
-            
-
 
         });
 
@@ -81,15 +82,15 @@ class Session extends React.PureComponent {
 
     render() {
         const task = AccountStore.getTask();
+        console.log(task.data.topics);
         const sessionNum = localStorage.getItem("session-num") || 0;
 
         const timer = (
             <div style={{marginTop: '10px', textAlign: 'center'}}>
                 {/* <Timer start={this.state.start} duration={constants.taskDuration} onFinish={this.onFinish} style={{fontSize: '2em'}} showRemaining={false}/> */}
                 
-                
-                <Link className={"btn btn-primary" } to={sessionNum < constants.topicsSize-1 ? "/covidsearch/intermediatetest" : "/covidsearch/posttest"} role="button">
-                        Next
+                <Link className={"btn btn-primary" } to={"/QHWPostTest/posttest"} role="button">
+                        Finish
                 </Link>
             </div>
         );
@@ -108,14 +109,14 @@ class Session extends React.PureComponent {
         const taskDescription = (
             <Collapsible trigger="Your Task" open transitionTime={3} onOpen={handleTaskOpen} onClose={handleTaskClose} >
                 <p>
-                        We require to find research regarding the following information need:
+                        We require to find relevant documents regarding the following information need:
                 </p>
 
-                <p ><b><i>"{ task.data.topics[sessionNum].narrative }"</i></b></p> 
+                <p ><b><i>"{ task.data.topics[1].description }"</i></b></p> 
                 <hr/>
 
                 <p>
-                    After you are satisfied with knowledge you acquired, click the Next button above to submit the two queries which you found to be most resourceful for this particular information need.
+                    After you are satisfied with your found documents, click the Finish button above to submit the documents which you found to be most resourceful for this particular information need.
                 </p>
 
 

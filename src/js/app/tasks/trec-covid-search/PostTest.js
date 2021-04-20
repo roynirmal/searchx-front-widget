@@ -197,50 +197,12 @@ const formData = function(topic) {
 
     elements = [];
 
-    // elements.push({
-    //     type: "html",
-    //     name: "outline-description",
-    //     html: `
-    //         <p>  ${topic.description}</p>
-    //         <b> Based on what you have learned from the search session about the topic, please write, in your own words, a summary at a minimum of 100 words. </b>
-            
-    //         `
-    // });
-
-    // elements.push({
-    //     title: "Write your outline here:",
-    //     name: "outline-paper",
-    //     type: "comment",
-    //     inputType: "text",
-    //     description: "",
-    //     rows: 6,
-    //     isRequired: true
-    // });
-
-    // elements.push({
-    //     title: "Please write your summary here. ",
-    //     name: "summary",
-    //     type: "comment",
-    //     inputType: "text",
-    //     rows: 6,
-    //     isRequired: true
-    // });
-
     elements.push({
         type: "html",
         name: "searchx-feedback-description",
         html: "<b>We would also like you to describe your experience while using SearchX and taking part in our study. This information will help us in making SearchX better for future usage. It will also help us to analyze user experience during the study. </b>"
     });
    
-
-    // elements.push({
-    //     title: "During your searches did you have difficulties finding information about something? If so, describe briefly what you were looking for.",
-    //     name: "difficulties",
-    //     type: "comment",
-    //     inputType: "text",
-    //     rows: 4,
-    //     isRequired: true
-    // });
     elements.push({
         title: "I didn't notice any inconsistencies when I used the system.",
         name: "inconsistencies",

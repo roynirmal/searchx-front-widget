@@ -1,7 +1,7 @@
 {
-    "taskId": "trec-covid-search",
+    "taskId": "query-history-widget",
     "groupSize": 1,
-    "topicsSize": 3,
+    "topicsSize": 1,
     "taskDuration": 100,
     "waitDuration": 20,
     "switchPageLimit": 3,

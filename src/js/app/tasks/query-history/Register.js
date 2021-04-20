@@ -6,6 +6,7 @@ import {log} from "../../../utils/Logger";
 import {LoggerEventTypes} from "../../../utils/LoggerEventTypes";
 
 import AccountStore from "../../../stores/AccountStore";
+import SyncStore from "../../../stores/SyncStore";
 import SessionStore from "../../../stores/SessionStore";
 
 class Register extends React.Component {
@@ -28,7 +29,7 @@ class Register extends React.Component {
         log(LoggerEventTypes.SURVEY_REGISTER_RESULTS, {
             data: data
         });
-
+        SyncStore.emitSyncSubmit(data);
         const userId = data['userId'].trim();
         AccountStore.clearUserData();
         AccountStore.setUserId(userId);
@@ -39,13 +40,10 @@ class Register extends React.Component {
         };
 
         SessionStore.initializeTask(constants.taskId, taskParams, (res) => {
+            console.log("here?")
+            console.log(res);
             if (res) {
-                
-                if ('topic' in res.taskData) {
-                    this.props.history.push('/sync/session');
-                } else {
-                    this.props.history.push('/sync/pretest');
-                }
+                this.props.history.push('/sync/session');
             }
         });
     }
@@ -181,7 +179,7 @@ const formData = function() {
 
     elements.push({
         title: "For which subject areas do you have a {degree}?",
-        visibleIf: "{degree} > 0 & {degree} < 7",
+        visibleIf: "{degree} > 0 and {degree} < 7",
         name : "background",
         type :"text",
         inputType:"text",
@@ -232,86 +230,6 @@ const formData = function() {
 
     pages.push({elements:  elements});
 
-    elements = [];
-    
-    elements.push({
-        type: "html",
-        name: "topic",
-        html: 
-        `<h3>Search as Learning</h3>
-        <br/> People often search the web to learn about something---whether it is knowledge they require for work, their study or just for fun. For the next few questions, we want you to think about how often you use the web when learning something about a scientific topic (e.g. how does partial differentiation work? what is a qubit? how can you determine the water quality of a pond?).
-        <br/>
-        <br/>
-        <div align="center">
-        <img src ="img/journey_2.jpeg" width="450" height="250">
-        </div>
-        
-        `
-    });
-
- 
-
-    elements.push({
-        title: "How often do you learn about a scientific topic (see the examples above) by searching the web?",
-        name: "web-previous",
-        type: "comment",
-        inputType: "text",
-        width: 600,
-        rows: 1,
-        isRequired: true
-    });
-
-
-
-    elements.push({
-        type: "html",
-        html: "<hr/>"
-    });
-
-    elements.push({
-        type: "html",
-        html: "<b> Think about the most recent time you learned about a scientific topic by searching the web. </b>"
-    });
-
-    elements.push({
-        title: "Describe what you were trying to learn.",
-        name: "web-information-need",
-        type: "comment",
-        inputType: "text",
-        width: 600,
-        rows: 1,
-        isRequired: true
-    });
-
-    elements.push({
-        title: "What are your preferred online resources (like Wikipedia, Coursera, Youtube etc.) to learn about a scientific topic?",
-        name: "web-online",
-        type: "comment",
-        inputType: "text",
-        width: 600,
-        rows: 1,
-        isRequired: true
-    });
-
-        elements.push({
-        title: "What are your preferred offline resources (can be books, people, institutions) to learn about a scientific topic?",
-        name: "web-offline",
-        type: "comment",
-        inputType: "text",
-        width: 600,
-        rows: 1,
-        isRequired: true
-    });
-
-    elements.push({
-        type: "html",
-        html: "<hr/>"
-    });
-
-    pages.push({elements:  elements});
-
-
-    ////
 
     return {
         pages: pages,
