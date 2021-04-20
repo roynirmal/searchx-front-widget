@@ -36,6 +36,12 @@ import PilotSession3 from './tasks/algorithmic-mediation-pilot/Session3';
 import PilotDescription3 from './tasks/algorithmic-mediation-pilot/TaskDescription3';
 import PilotPostTest from './tasks/algorithmic-mediation-pilot/PostTest';
 
+import QHWRegister from './tasks/query-history/Register';
+import QHWDisqualified from './tasks/query-history/Disqualified';
+import QHWPostTest from './tasks/query-history/PostTest';
+import QHWSession from './tasks/query-history/Session';
+
+
 
 import RoleBasedRegister from './tasks/role-based/Register';
 import RoleBasedWait from './tasks/role-based/Wait';
