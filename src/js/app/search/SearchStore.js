@@ -332,6 +332,8 @@ const _search = (query, vertical, page) => {
                 session: localStorage.getItem("session-num")
             });
 
+            console.log('SEARCHY');
+
             SearchStore.emitChange();
             SessionActions.getQueryHistory();
         });

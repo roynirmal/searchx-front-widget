@@ -131,7 +131,6 @@ const SearchResults = function ({
     const currentCollapsedResultsLength = Object.values(collapsed).filter(value => value).length;
     const allBookmarkedResultsHidden = currentCollapsedResultsLength === getCollapsibleResultsLength();
 
-    console.log('SEARCH RESULTS');
 
     return (
         <div>
