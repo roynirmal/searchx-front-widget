@@ -20,7 +20,7 @@ const QueryHistory = function({history, popup, clickHandler, popupHandler, test}
                 <i className="fa fa-history medium"/> Recent queries
             </h3>
 
-            <div className="list" id="QueryHistory-List">
+            <div className="list">
                 {list}
             </div>
 
