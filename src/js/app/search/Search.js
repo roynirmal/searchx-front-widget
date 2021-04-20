@@ -186,6 +186,20 @@ class Search extends React.Component {
                     event: 'click',
                     name: 'RESULT_CLICK',
                 },
+                
+                // Rating hover in/out
+                'result-rating-hover': {
+                    selector: '.SearchResults .list > div div.SearchResult div span.rating',
+                    event: 'mouseHover',
+                    properties: {
+                        mouseenter: {
+                            name: 'RESULT_RATING_MOUSE_ENTER',
+                        },
+                        mouseleave: {
+                            name: 'RESULT_RATING_MOUSE_LEAVE',
+                        }
+                    },
+                },
 
 
             },
