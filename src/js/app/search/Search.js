@@ -151,7 +151,7 @@ class Search extends React.Component {
 
                 // Search result hover in/out
                 'result-hover': {
-                    selector: '.SearchResult',
+                    selector: '.SearchResults .list > div',
                     event: 'mouseHover',
                     properties: {
                         mouseenter: {
