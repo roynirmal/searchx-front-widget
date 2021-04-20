@@ -95,16 +95,13 @@ class Search extends React.Component {
                     selector: 'form input',
                     event: 'keyup',
                     name: 'QUERY_BOX_KEY',
-                    properties: {
-                        includeValues: [
-                            {
-                                nameForLog: 'QUERY_STRING',
-                                sourcer: 'elementProperty',
-                                selector: 'form input',
-                                lookFor: 'value',
-                            }
-                        ]
-                    }
+                    metadata: [
+                        {
+                            nameForLog: 'QUERY_STRING',
+                            sourcer: 'elementProperty',
+                            lookFor: 'value',
+                        }
+                    ]
                 },
 
                 'form-submission': {
