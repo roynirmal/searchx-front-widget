@@ -24,7 +24,6 @@ const SearchResult = function ({
         onClick={bookmarkClickHandler}
         stop={1} initialRating={initialBookmark}
         title="Save result"
-        data-index="55"
     />;
 
     // TODO: use variant from SearchStore instead of defaultVariant
