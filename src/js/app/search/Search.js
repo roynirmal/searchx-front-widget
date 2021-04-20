@@ -161,6 +161,18 @@ class Search extends React.Component {
                             name: 'RESULT_MOUSE_LEAVE',
                         }
                     },
+                    metadata: [
+                        {
+                            nameForLog: 'ID',
+                            sourcer: 'elementAttribute',
+                            lookFor: 'data-id',
+                        },
+                        {
+                            nameForLog: 'COLLECTION_ID',
+                            sourcer: 'elementAttribute',
+                            lookFor: 'data-collectionId',
+                        }
+                    ]
                 },
 
                 // Search result click
