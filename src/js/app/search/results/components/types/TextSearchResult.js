@@ -50,7 +50,12 @@ const TextSearchResult = function ({
     };
 
     function createSnippet() {
-        return {__html: result.snippet};
+        // return {__html: result.snippet};
+        var doctext = result.text.split('\n').map((item, key) => {
+            return <span key={key}>{item}<br/></span>
+        })
+
+        return {__html: result.text.substr(1,500) };
     }
 
     const hideCollapsedResults = function () {
