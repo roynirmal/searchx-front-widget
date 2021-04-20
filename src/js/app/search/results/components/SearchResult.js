@@ -24,6 +24,7 @@ const SearchResult = function ({
         onClick={bookmarkClickHandler}
         stop={1} initialRating={initialBookmark}
         title="Save result"
+        data-index="55"
     />;
 
     // TODO: use variant from SearchStore instead of defaultVariant
@@ -33,7 +34,6 @@ const SearchResult = function ({
             onClick={excludeClickHandler}
             stop={1} initialRating={initialExclude}
             title="Exclude result from future queries"
-            data-index="55"
         />}
     </div>;
 
