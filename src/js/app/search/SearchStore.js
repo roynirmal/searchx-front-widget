@@ -332,6 +332,15 @@ const _search = (query, vertical, page) => {
                 session: localStorage.getItem("session-num")
             });
 
+            if (window.hasOwnProperty('LogUI') && window.LogUI.isActive()) {
+                window.LogUI.logCustomMessage({
+                    event: 'QUERY_RETURNED',
+                    query: state.query,
+                    elapsedSearchTime: state.elapsedTime,
+                    provider: state.provider,
+                })
+            }
+
             SearchStore.emitChange();
             SessionActions.getQueryHistory();
         });

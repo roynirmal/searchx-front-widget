@@ -12,6 +12,7 @@ import Chat from "./features/chat/Chat";
 import config from "../../config";
 import MobileDetect from 'mobile-detect';
 import Alert from "react-s-alert";
+import AccountStore from "../../stores/AccountStore"
 
 class Search extends React.Component {
     constructor(props) {
@@ -41,6 +42,197 @@ class Search extends React.Component {
         //     Chat();
         // };
         document.addEventListener('visibilitychange', this.handleVisibilityChange);
+
+        if (window.hasOwnProperty('LogUI')) {
+            this.startLogUI();
+        }
+    }
+
+    startLogUI() {
+        let configurationObject = {
+            logUIConfiguration: {
+                endpoint: 'ws://logui.ewi.tudelft.nl/ws/endpoint/',
+                authorisationToken: 'eyJ0eXBlIjoibG9nVUktYXV0aG9yaXNhdGlvbi1vYmplY3QiLCJhcHBsaWNhdGlvbklEIjoiNjg2OGRkZDEtODNhYy00NTJlLTk2ZDEtNjJkZDg5OWJlNTUzIiwiZmxpZ2h0SUQiOiI0NWJlNGFkNS0yNDQ0LTRlOTItYTA0My05ZmQ0YmZhYWI4ZmUifQ:1lYafK:1cG6yM47tk2vv1hSuhuAsxVYZbDGDBvenrjpvbPKjwI',
+                verbose: true,
+
+                browserEvents: {
+                    blockEventBubbling: true,
+                    eventsWhileScrolling: true,
+                    URLChanges: true,
+                    contextMenu: true,
+                    pageFocus: true,
+                    trackCursor: false,
+                    cursorUpdateFrequency: 2000,
+                    cursorLeavingPage: true,
+                    pageResize: true,
+                }
+            },
+            applicationSpecificData: {
+                userId: AccountStore.getUserId(),
+                groupId: AccountStore.getGroupId(),
+            },
+            trackingConfiguration: {
+                // Form and query box
+                'query-box-hoverin': {
+                    selector: 'form input',
+                    event: 'mouseenter',
+                    name: 'QUERY_BOX_MOUSE_ENTER',
+                },
+
+                'query-box-focus': {
+                    selector: 'form input',
+                    event: 'focus',
+                    name: 'QUERY_BOX_FOCUS',
+                },
+
+                'query-box-blur': {
+                    selector: 'form input',
+                    event: 'blur',
+                    name: 'QUERY_BOX_BLUR',
+                },
+
+                'query-box-keypress': {
+                    selector: 'form input',
+                    event: 'keyup',
+                    name: 'QUERY_BOX_KEY',
+                    metadata: [
+                        {
+                            nameForLog: 'QUERY_STRING',
+                            sourcer: 'elementProperty',
+                            lookFor: 'value',
+                        }
+                    ]
+                },
+
+                'form-submission': {
+                    selector: 'form',
+                    event: 'formSubmission',
+                    name: 'FORM_SUBMISSION',
+                    properties: {
+                        includeValues: [
+                            {
+                                nameForLog: 'submittedQuery',
+                                sourcer: 'elementProperty',
+                                selector: 'form input',
+                                lookFor: 'value',
+                            }
+                        ]
+                    }
+                },
+
+                // QHW box hover in/out
+                'qhw-hover': {
+                    selector: '.QueryHistory .tl',
+                    event: 'mouseHover',
+                    properties: {
+                        mouseenter: {
+                            name: 'QHW_MOUSE_ENTER',
+                        },
+                        mouseleave: {
+                            name: 'QHW_MOUSE_LEAVE',
+                        }
+                    },
+                },
+
+                // QHW previous query hover in/out
+                'qhw-hover-item': {
+                    selector: '.QueryHistory * .list .item .text a',
+                    event: 'mouseHover',
+                    properties: {
+                        mouseenter: {
+                            name: 'QHW_QUERY_MOUSE_ENTER',
+                        },
+                        mouseleave: {
+                            name: 'QHW_QUERY_MOUSE_LEAVE',
+                        }
+                    },
+                    metadata: [
+                        {
+                            nameForLog: 'QUERY',
+                            sourcer: 'elementAttribute',
+                            lookFor: 'data-query',
+                        }
+                    ]
+                },
+
+                // QHW previous query click
+                'qhw-click-item': {
+                    selector: '.QueryHistory * .list .item .text a',
+                    event: 'click',
+                    name: 'QHW_QUERY_CLICK',
+                },
+
+                // QHW scrolling
+                'qhw-scrolling': {
+                    selector: '.QueryHistory *',
+                    event: 'scrollable',
+                    properties: {
+                        scrollStart: {
+                            name: 'QHW_SCROLL_START',
+                        },
+                        scrollEnd: {
+                            name: 'QHW_SCROLL_END',
+                        },
+                    },
+                },
+
+                // Search result hover in/out
+                'result-hover': {
+                    selector: '.SearchResults .list > div div.SearchResult',
+                    event: 'mouseHover',
+                    properties: {
+                        mouseenter: {
+                            name: 'RESULT_MOUSE_ENTER',
+                        },
+                        mouseleave: {
+                            name: 'RESULT_MOUSE_LEAVE',
+                        }
+                    },
+                    metadata: [
+                        {
+                            nameForLog: 'ID',
+                            sourcer: 'elementAttribute',
+                            lookFor: 'data-id',
+                        },
+                        {
+                            nameForLog: 'COLLECTION_ID',
+                            sourcer: 'elementAttribute',
+                            lookFor: 'data-collectionid',
+                        },
+                        {
+                            nameForLog: 'RANK',
+                            sourcer: 'elementAttribute',
+                            lookFor: 'data-rank',
+                        }
+                    ]
+                },
+
+                // Search result click
+                'result-click': {
+                    selector: '.SearchResults .list > div div.SearchResult div div h2 a',
+                    event: 'click',
+                    name: 'RESULT_CLICK',
+                },
+                
+                // Rating hover in/out
+                'result-rating-hover': {
+                    selector: '.SearchResults .list > div div.SearchResult div span.rating',
+                    event: 'mouseHover',
+                    properties: {
+                        mouseenter: {
+                            name: 'RESULT_RATING_MOUSE_ENTER',
+                        },
+                        mouseleave: {
+                            name: 'RESULT_RATING_MOUSE_LEAVE',
+                        }
+                    },
+                },
+
+
+            },
+        };
+
+        window.LogUI.init(configurationObject);
     }
 
     componentWillUnmount() {
@@ -54,6 +246,12 @@ class Search extends React.Component {
             element.parentElement.removeChild(element);
         };
         document.removeEventListener('visibilitychange', this.handleVisibilityChange, this.checkDevice);
+
+        if (window.hasOwnProperty('LogUI')) {
+            if (window.LogUI.isActive()) {
+                window.LogUI.stop();
+            }
+        }
     }
 
     render() {
