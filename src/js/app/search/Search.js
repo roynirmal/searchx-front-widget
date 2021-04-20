@@ -57,7 +57,7 @@ class Search extends React.Component {
     }
 
     render() {
-       
+       localStorage.setItem("variant", "ur")
         return (
             <div className="Search">
                 {this.checkDevice()}

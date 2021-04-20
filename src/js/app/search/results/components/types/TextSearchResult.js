@@ -21,15 +21,15 @@ const TextSearchResult = function ({
 
     let clickUrl = () => {
 
-        var doctext = result.text.split('\n').map((item, key) => {
-            return <span key={key}>{item}<br/></span>
-        })
+        // var doctext = result.text.split('\n').map((item, key) => {
+        //     return <span key={key}>{item}<br/></span>
+        // })
 
-        doctext.unshift(<h4> {result.source} <br/></h4>);
-        doctext.unshift(<h3> {result.name} <br/></h3>);
+        // doctext.unshift(<h4> {result.source} <br/></h4>);
+        // doctext.unshift(<h3> {result.name} <br/></h3>);
 
-        urlClickHandler(result.id, doctext);
-        log(LoggerEventTypes.SEARCHRESULT_CLICK_URL, metaInfo);
+        // urlClickHandler(result.id, doctext);
+        // log(LoggerEventTypes.SEARCHRESULT_CLICK_URL, metaInfo);
     };
 
     let viewUrl = (isVisible) => {
@@ -77,10 +77,16 @@ const TextSearchResult = function ({
     if (result.name === result.name.toUpperCase()) {
         result.name = toTitleCase(result.name);
     }
-
+    let cn
+    if (index === 4 && localStorage.getItem("variant") === 'mid') {
+        cn = "result-text-space";
+    } else {
+        cn = "result-text";
+    }
+ 
     ////
     return (
-        <div className="result-text">
+        <div className={cn}>
             <VisibilitySensor
                 onChange={viewUrl}
                 scrollCheck
@@ -116,7 +122,6 @@ const TextSearchResult = function ({
                         {metadata}
                     </div>
                 )}
-
             </div>
         </div>
     )

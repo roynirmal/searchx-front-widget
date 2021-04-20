@@ -46,7 +46,7 @@ const SearchResult = function ({
         bookmarkButton: bookmarkButton,
         // excludeButton: excludeButton,
         urlClickHandler: urlClickHandler,
-        hideCollapsedResultsHandler: hideCollapsedResultsHandler,
+        // hideCollapsedResultsHandler: hideCollapsedResultsHandler,
         isCollapsible: isCollapsible,
         visited: visited
     };
@@ -96,11 +96,11 @@ function formatMetadata(metadata) {
         let formattedTime = date.toLocaleDateString();
         if (formattedTime === now) formattedTime = date.toLocaleTimeString();
 
-        elements.push(
-            <span>
-                <i className="fa fa-bookmark"/> <img src={iconUrl} alt={"User " + md5(metadata.bookmark.userId)}/>  {formattedTime}
-            </span>
-        );
+        // elements.push(
+        //     <span>
+        //         <i className="fa fa-bookmark"/> <img src={iconUrl} alt={"User " + md5(metadata.bookmark.userId)}/>  {formattedTime}
+        //     </span>
+        // );
     }
 
     return <div className="metadata">{elements}</div>;
