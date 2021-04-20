@@ -53,12 +53,10 @@ const SearchResult = function ({
     const ResultType = config.providerVerticals[provider].get(searchState.vertical);
     const view = <ResultType {...props}/>;
 
-    console.log(props.index);
-
     return (
         <Collapse in={!collapsed}>
             <div>
-                <div className="SearchResult" data-id={result.id} data-collectionid={result.collectionId}>
+                <div className="SearchResult" data-rank={props.index + 1} data-id={result.id} data-collectionid={result.collectionId}>
                     {view}
                 </div>
             </div>

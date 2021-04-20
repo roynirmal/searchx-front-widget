@@ -171,6 +171,11 @@ class Search extends React.Component {
                             nameForLog: 'COLLECTION_ID',
                             sourcer: 'elementAttribute',
                             lookFor: 'data-collectionid',
+                        },
+                        {
+                            nameForLog: 'RANK',
+                            sourcer: 'elementAttribute',
+                            lookFor: 'data-rank',
                         }
                     ]
                 },
