@@ -67,12 +67,14 @@ const formData = function() {
         html: `
         <h3>Find the relevant documents!</h3>
         
+
         <hr/>
         <p> We want you to search and find relevant documents for the topic
         <b>Wildlife Extinction</b> in this task. </p>
 
+
         <p>You can interact with the search engine by issuing queries on the 
-        query bar or clicking on previously issued queries on the query 
+        query bar or clicking on previously submitted queries on the query 
         history widget. There are <b>over 150</b> relevant documents on the 
         topic. Mark documents that you think are relevant using the bookmark
          icon <i class="fa fa-bookmark-o" aria-hidden="true"></i> next to the 
@@ -96,13 +98,16 @@ const formData = function() {
             species, and steps taken to save the species.</b></p>
         
         <hr/>
-        <p>During the search phases we want you to use our custom web search 
-        system to learn about one topic –- you find a description of your topic 
-        on the right-hand side of the search interface. </br>
-        Our search interface has a few items that should help you to learn and 
-        search–-we will introduce them to you on the next screen. </p>
+
+
+        <p>During the search phase, we want you to use our custom web search 
+        system to search about the topic –- you find a description of your topic 
+        again on the right-hand side of the search interface. </br>
+        Our search interface has a few items that should help you on your task
+        –-we will introduce them to you on the next screen. </p>
+    aa
         
-        <p>You are required to search for documents, read them and mark the 
+        <p>You must search for documents, read them and mark the 
         ones that you think are relevant to the topic.
         When you are satisfied, you can click on the 
         <span style="background-color: #00A6D3"><font color="white">To Final Test</span></font>
@@ -113,49 +118,25 @@ const formData = function() {
             <li>
                 <p>
                 <b>Only use the web search interface we provide.</b></br>
-                Do not switch browser tabs–-after three tab switches we will 
-                cancel your participation.
+                Do not switch browser tabs–-after three tab switches we will cancel your participation.
                 </p>
             </li>
             <li>
                 <p>
                 <b>You cannot interact with the search results. </b></br>
-                We require you to judge the relevance of the documment based on
-                 the snipped presented.
-                You cannot click on the document title to open it. If you want 
-                more information, submit another query.
-                </p>
-            </li>
-            <li>
-                <p>
-                <b>You will only see 10 documents at a time. </b></br>
-                Unlike other search engines, you will only see a limited list 
-                of documents at a time.
-                </p>
-            </li>
-            <li>
-                <p>
-                <b>
-                    You can use the query history widget to re-submit queries. 
-                </b></br>
-                If you want to re-submit a query, you can also click on the 
-                query in the query history widget.
+                We require you to judge the relevance of the document based on the snippet presented.
+                You cannot click on the document title to open it. If you want more information, submit another query.
                 </p>
             </li>
             <li> 
                 <p>
-                <b>Keep your searches on the topic and avoid searches on 
-                unrelated topics. </b></br>
-                We will consider off-topic searches, like the tomorrow's 
-                weather, news on politics, or movie reviews of the Black Widow 
-                movie, as off-topic and may cancel your participation.
+                Keep your searches on the topic and avoid searches on unrelated topics.
+                We will consider off-topic searches, like tomorrow's weather, news on politics, or movie reviews of the Black Widow movie, as off-topic and may cancel your participation.
                 </p>
             </li>
         </ol>
         <hr/>
-        <p>Finally, a reminder before you continue:
-        please read the task description on the right-hand side of the search 
-        interface carefully. </p>
+        <p>Finally, a reminder before you continue: please read the task description carefully on the right-hand side of the search interface. </p>
         `
     });
 
@@ -185,7 +166,6 @@ const formData = function() {
         title: "What is your highest academic degree so far?",
         name: "degree",
         type: "radiogroup",
-        default: -1,
         isRequired: true,
         choices: [
             {value: 0, text: "High School or lower"},
@@ -201,7 +181,7 @@ const formData = function() {
 
     elements.push({
         title: "For which subject areas do you have a {degree}?",
-        visibleIf: "{degree} >= 1 and {degree} <= 6",
+        visibleIf: "{degree} > 0 & {degree} < 7",
         name : "background",
         type :"text",
         inputType:"text",
@@ -252,83 +232,83 @@ const formData = function() {
 
     pages.push({elements:  elements});
 
-    // elements = [];
+    elements = [];
     
-    // elements.push({
-    //     type: "html",
-    //     name: "topic",
-    //     html: 
-    //     `<h3>Search as Learning</h3>
-    //     <br/> People often search the web to learn about something---whether it is knowledge they require for work, their study or just for fun. For the next few questions, we want you to think about how often you use the web when learning something about a scientific topic (e.g. how does partial differentiation work? what is a qubit? how can you determine the water quality of a pond?).
-    //     <br/>
-    //     <br/>
-    //     <div align="center">
-    //     <img src ="img/journey_2.jpeg" width="450" height="250">
-    //     </div>
+    elements.push({
+        type: "html",
+        name: "topic",
+        html: 
+        `<h3>Search as Learning</h3>
+        <br/> People often search the web to learn about something---whether it is knowledge they require for work, their study or just for fun. For the next few questions, we want you to think about how often you use the web when learning something about a scientific topic (e.g. how does partial differentiation work? what is a qubit? how can you determine the water quality of a pond?).
+        <br/>
+        <br/>
+        <div align="center">
+        <img src ="img/journey_2.jpeg" width="450" height="250">
+        </div>
         
-    //     `
-    // });
+        `
+    });
 
  
 
-    // elements.push({
-    //     title: "How often do you learn about a scientific topic (see the examples above) by searching the web?",
-    //     name: "web-previous",
-    //     type: "comment",
-    //     inputType: "text",
-    //     width: 600,
-    //     rows: 1,
-    //     isRequired: true
-    // });
+    elements.push({
+        title: "How often do you learn about a scientific topic (see the examples above) by searching the web?",
+        name: "web-previous",
+        type: "comment",
+        inputType: "text",
+        width: 600,
+        rows: 1,
+        isRequired: true
+    });
 
 
 
-    // elements.push({
-    //     type: "html",
-    //     html: "<hr/>"
-    // });
+    elements.push({
+        type: "html",
+        html: "<hr/>"
+    });
 
-    // elements.push({
-    //     type: "html",
-    //     html: "<b> Think about the most recent time you learned about a scientific topic by searching the web. </b>"
-    // });
+    elements.push({
+        type: "html",
+        html: "<b> Think about the most recent time you learned about a scientific topic by searching the web. </b>"
+    });
 
-    // elements.push({
-    //     title: "Describe what you were trying to learn.",
-    //     name: "web-information-need",
-    //     type: "comment",
-    //     inputType: "text",
-    //     width: 600,
-    //     rows: 1,
-    //     isRequired: true
-    // });
+    elements.push({
+        title: "Describe what you were trying to learn.",
+        name: "web-information-need",
+        type: "comment",
+        inputType: "text",
+        width: 600,
+        rows: 1,
+        isRequired: true
+    });
 
-    // elements.push({
-    //     title: "What are your preferred online resources (like Wikipedia, Coursera, Youtube etc.) to learn about a scientific topic?",
-    //     name: "web-online",
-    //     type: "comment",
-    //     inputType: "text",
-    //     width: 600,
-    //     rows: 1,
-    //     isRequired: true
-    // });
+    elements.push({
+        title: "What are your preferred online resources (like Wikipedia, Coursera, Youtube etc.) to learn about a scientific topic?",
+        name: "web-online",
+        type: "comment",
+        inputType: "text",
+        width: 600,
+        rows: 1,
+        isRequired: true
+    });
 
-    //     elements.push({
-    //     title: "What are your preferred offline resources (can be books, people, institutions) to learn about a scientific topic?",
-    //     name: "web-offline",
-    //     type: "comment",
-    //     inputType: "text",
-    //     width: 600,
-    //     rows: 1,
-    //     isRequired: true
-    // });
+        elements.push({
+        title: "What are your preferred offline resources (can be books, people, institutions) to learn about a scientific topic?",
+        name: "web-offline",
+        type: "comment",
+        inputType: "text",
+        width: 600,
+        rows: 1,
+        isRequired: true
+    });
 
-    // elements.push({
-    //     type: "html",
-    //     html: "<hr/>"
-    // });
+    elements.push({
+        type: "html",
+        html: "<hr/>"
+    });
 
-    // pages.push({elements:  elements});
+    pages.push({elements:  elements});
 
 
     ////

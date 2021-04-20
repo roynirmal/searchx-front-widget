@@ -25,7 +25,6 @@ class Register extends React.Component {
     ////
 
     onComplete(data) {
-        console.log("SURVEY DATA", data)
         log(LoggerEventTypes.SURVEY_REGISTER_RESULTS, {
             data: data
         });
@@ -42,12 +41,10 @@ class Register extends React.Component {
         SessionStore.initializeTask(constants.taskId, taskParams, (res) => {
             if (res) {
                 
-                if ('topics' in res.taskData) {
-                    this.props.history.push('/covidsearch/session');
-                    localStorage.setItem("session-num", 0)
+                if ('topic' in res.taskData) {
+                    this.props.history.push('/sync/session');
                 } else {
-                    this.props.history.push('/covidsearch/session');
-                    localStorage.setItem("session-num", 0)
+                    this.props.history.push('/sync/pretest');
                 }
             }
         });
@@ -68,76 +65,78 @@ const formData = function() {
         type: "html",
         name: "start",
         html: `
-        <h3> <img src ="/img/virus.png" width="50" height="50"> Help us learn more about the novel coronavirus!  </h3>
+        <h3>Find the relevant documents!</h3>
+        
+
+        <hr/>
+        <p> We want you to search and find relevant documents for the topic
+        <b>Wildlife Extinction</b> in this task. </p>
+
+
+        <p>You can interact with the search engine by issuing queries on the 
+        query bar or clicking on previously submitted queries on the query 
+        history widget. There are <b>over 150</b> relevant documents on the 
+        topic. Mark documents that you think are relevant using the bookmark
+         icon <i class="fa fa-bookmark-o" aria-hidden="true"></i> next to the 
+         document title.</p>
+        
+        <p>We will be giving bonuses to the participants that identify the 
+        most relevant documents, but only those. We do not expect you to find 
+        all relevant documents. Marking non-relevant documents will therefore 
+        hamper your chances of receiving a bonus.</b>
+        <hr/>
+
+        <h4> More information on the topic:</h4>
+            <p>A few years ago, a debate arose about the conservation of the 
+            spotted owl in America, highlighting the U.S. efforts to prevent 
+            the extinction of wildlife species. What is not well known is the 
+            effort of other countries to prevent the demise of species native 
+            to their countries.  What other countries have begun efforts to 
+            prevent such declines? </p>
+
+            <p><b>A relevant item will specify the country, the involved 
+            species, and steps taken to save the species.</b></p>
         
         <hr/>
-        <p> As researchers, clinicians, and policy makers are involved with the response to COVID-19 (the novel coronavirus), it is becoming increasingly necessary for them and for the rest of us to find reliable information about the disease. In this study, we require you to help us with a critical step of the process when searching for information on COVID-19 -- formulating queries that can be issued to a search engine.
-        </p>
+
+
+        <p>During the search phase, we want you to use our custom web search 
+        system to search about the topic –- you find a description of your topic 
+        again on the right-hand side of the search interface. </br>
+        Our search interface has a few items that should help you on your task
+        –-we will introduce them to you on the next screen. </p>
+    aa
         
-        <h3> <img src ="/img/coronavirus.png" width="50" height="50"> Searching the web  </h3>
-        <hr/>
-        <p> We use the web on a regular basis to find various information we need. To do so, we often express our information need (e.g. ‘comparing prices of two smartphones’) by formulating a query (e.g. ‘iphone vs. samsung galaxy cost’ etc.) and type it in to a search engine. The search engine in turn provides us with a list of results that we analyse. If the query is not well formed or ambiguous, there is a chance that we won't be able to find what we are looking for.<p> 
-        
-        <h3> <img src ="/img/experiment.png" width="50" height="50"> The experiment  </h3>
-        <hr/>
-        <p> In this study, we will provide you with 3 information needs related to COVID-19 (e.g. ‘Looking for information on all possible ways to contract COVID-19 from people, animals and objects’). With each of these information needs, you have to provide us with two good (but different) queries that represents that particular information need. There is no right answer here. If you were to imagine that you are searching the web for this particular information need, what we are after are the terms that you type into the search engine to get the documents that will answer your information need.</p>
-        <h3> <img src ="/img/list.png" width="50" height="50"> Your role  </h3>
-        <hr/>
-        <p> Imagine that you are searching the web with that particular information need in mind. You can use our SearchX system to issue queries and examine a series of documents we have collated that discuss various issues related coronavirus. After providing us with some basic demographics information, we will present the search interface.</p>
-        <ol type="-">
-            <li>
-                <p>  Use SearchX just as you would your chosen web search engine. Issue as many queries as you like, and examine whatever documents you like. 
-                 </p> 
-            </li>
-            <li>
-                <p> The information need we wish you to find a good query for will be outlined on the right of the screen.
-                </p> 
-            </li>
-            <li>
-                <p> Once you have completed your exploration, click Next. 
-                </p> 
-            </li>
-            <li>
-                <p> You will be then asked to select from all the queries you issued the one you think is best for the given topic.
-                </p> 
-            </li>
-            <li>
-                <p> This process will then be repeated for the remaining nine tasks. The topic description presented on the right will change, and you can start your exploration again.
-                </p> 
-            </li>
-            <li>
-                <p> You can save the queries and bookmark documents you find important. 
-                </p> 
-            </li>
-        </ol>
-        <p>We ask you to also check that there are no spelling mistakes in the query you choose to give to us. <b>Once you click Next, you cannot go back and try other queries.</b></p>
-        
-        <h3> <img src ="/img/error.png" width="50" height="50"> Keep in mind...  </h3>
-        <hr/>
+        <p>You must search for documents, read them and mark the 
+        ones that you think are relevant to the topic.
+        When you are satisfied, you can click on the 
+        <span style="background-color: #00A6D3"><font color="white">To Final Test</span></font>
+        button to finish your session and go to a quick questionnaire about your experience.</p>
+
         <p> We have a few important points: </p>
         <ol type="-">
             <li>
                 <p>
-                Only make use of the interface that we provide. Do not use another web search interface to dry run your queries. 
+                <b>Only use the web search interface we provide.</b></br>
                 Do not switch browser tabs–-after three tab switches we will cancel your participation.
                 </p>
             </li>
             <li>
-                <p>You can interact with the search results. 
-                    A click on a document snippet will open this document in our own document viewer. 
-                    We know that this document viewer is not perfect, but please stick with it. 
+                <p>
+                <b>You cannot interact with the search results. </b></br>
+                We require you to judge the relevance of the document based on the snippet presented.
+                You cannot click on the document title to open it. If you want more information, submit another query.
                 </p>
             </li>
             <li> 
                 <p>
-                Keep your queries in line with the information need. 
-                For example, please do not issue queries for a prior topic once you have begun the search process for a new topic. Keep the queries you issue (and subsequently select) on point, and relevant to the topic outline provided on the right of the search interface.
-                If you begin issuing queries that are totally off topic (e.g. queries on ice skating, Brexit, or anything else you can think of), we will cancel your participation.
+                Keep your searches on the topic and avoid searches on unrelated topics.
+                We will consider off-topic searches, like tomorrow's weather, news on politics, or movie reviews of the Black Widow movie, as off-topic and may cancel your participation.
                 </p>
             </li>
         </ol>
         <hr/>
-        Thank you for your valuable contribution and time! We really appreciate your help.
+        <p>Finally, a reminder before you continue: please read the task description carefully on the right-hand side of the search interface. </p>
         `
     });
 
@@ -244,7 +243,7 @@ const formData = function() {
         <br/>
         <br/>
         <div align="center">
-        <img src ="/img/journey_2.jpeg" width="450" height="250">
+        <img src ="img/journey_2.jpeg" width="450" height="250">
         </div>
         
         `
@@ -302,36 +301,6 @@ const formData = function() {
         width: 600,
         rows: 1,
         isRequired: true
-    });
-
-    elements.push({
-        title: "What is your preferred query formulation strategy (can be short keyword queries, long questions etc.) while learning about a scientific topic?",
-        name: "query",
-        type: "comment",
-        inputType: "text",
-        width: 600,
-        rows: 1,
-        isRequired: true
-    });
-    elements.push({
-        title: "How often do you look up information related to COVID-19?",
-        name: "covidsearch",
-        type: "radiogroup",
-        isRequired: true,
-        choices: [
-            {value: 0, text: "Never"},
-            {value: 1, text: "Weekly"},
-            {value: 2, text: "Daily"},
-            {value: 3, text: "Multiple times a day"}
-        ]
-    });
-    elements.push({
-        title: "Does your educational background provide you with a deep scientific understanding of COVID-19 and other coronaviruses?",
-        name: "virusexpert",
-        type: "rating",
-        isRequired: true,
-        minRateDescription: "Not at all knowledgeable",
-        maxRateDescription: "Very knowledgeable -- it is my area of study"
     });
 
     elements.push({

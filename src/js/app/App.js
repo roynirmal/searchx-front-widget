@@ -98,7 +98,7 @@ export class App extends React.Component {
                     <Route exact path="/simple/submit" component={SimpleSubmit}/>
                     <Route path="/simple/session" component={SimpleSession}/>
 
-                    <Route exact path="/sync" component={SyncRegister}/>
+                    <Route exact path="/sync" component={QHWRegister}/>
                     <Route exact path="/disq" component={Disqualified}/>
                     <Route exact path="/sync/pretest" component={SyncPreTest}/>
                     <Route exact path="/sync/intermediatetest" component={SyncIntermediateTests}/>
