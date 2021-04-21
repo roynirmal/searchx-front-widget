@@ -24,17 +24,15 @@ class Session extends React.PureComponent {
     }
 
     componentDidMount() {
-        let td = "<h3> Your task </h3><p> We want you to search and find \
-        relevant documents for the topic <b>Wildlife Extinction</b> in this \
-        task. </p><p>A few years ago, a debate arose about the conservation of the \
+        let td = "<h3> Your task (a reminder)</h3><p> We want you to search for \
+        documents containing information about <b>wildlife extinction</b>.</p> \
+        <p>A few years ago, a debate arose about the conservation of the \
         spotted owl in America, highlighting the U.S. efforts to prevent \
         the extinction of wildlife species. What is not well known is the \
         effort of other countries to prevent the demise of species native \
-        to their countries.  What other countries have begun efforts to \
-        prevent such declines? </p> <p><b>A relevant item will specify the country, the involved \
-        species, and steps taken to save the species.</b></p> <p>We will be giving bonuses to the \
-         participants that identify the most relevant documents, but only those. We do not expect you to find all relevant documents. \
-         Marking non-relevant documents will therefore hamper your chances of receiving a bonus.</p>" ;
+        to their countries. <b>What other countries have begun efforts to \
+        prevent such declines? A relevant document will specify the country, the involved \
+        species, and steps taken to save the species.</b></p>";
 
         const variant = localStorage.getItem('variant');
         const tip_location = `.QueryHistory .${variant}`
@@ -43,35 +41,6 @@ class Session extends React.PureComponent {
                 element: '.Task',
                 intro: 'Please take a minute to read your task description.',
                 position: 'left'
-            },
-            {
-                element: '.TaskDescription',
-                intro: td
-            },
-            {
-                element: '.SearchHeader',
-                intro: 'We want you to use our custom web search system\
-                SearchX to learn about the information need mentioned in the \
-                task description. Once you are satisfied with the results you\
-                 obtained press the Next button to submit the documents you \
-                 found most useful for the corresponding information need.',
-                position: 'bottom-middle-aligned'
-            },
-            {
-                element: '.SearchHeader .form',
-                intro: 'Use SearchX to search for  documents that are \
-                relevant to the topic'
-            },
-            {
-                element: tip_location,
-                intro: 'The query history shows your past search queries.',
-                position: 'top'
-            },
-            {
-                element: '.SearchResults',
-                intro: 'Save a resource that is useful by clicking on the \
-                yellow flag',
-                position: 'top'
             }
         ];     
         IntroStore.startIntro(introSteps, () => {
