@@ -41,6 +41,7 @@ class Register extends React.Component {
         log(LoggerEventTypes.SURVEY_REGISTER_RESULTS, {
             data: data
         });
+        console.log("111");
         SyncStore.emitSyncSubmit(data);
         const userId = data['userId'].trim();
         AccountStore.clearUserData();
