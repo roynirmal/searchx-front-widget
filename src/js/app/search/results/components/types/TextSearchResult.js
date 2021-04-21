@@ -50,7 +50,7 @@ const TextSearchResult = function ({
     };
 
     function createSnippet() {
-        return {__html: result.snippet.substr(1,400)};
+        return {__html: result.snippet};
         // var doctext = result.text.split('\n').map((item, key) => {
         //     return <span key={key}>{item}<br/></span>
         // })

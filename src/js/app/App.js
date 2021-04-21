@@ -54,6 +54,15 @@ export class App extends React.Component {
     
     
     render() {
+        const width  = window.outerWidth;
+        const height = window.outerHeight;
+        const sHeight = screen.height;
+        const sWidth = screen.width;
+
+        const sAvailHeight = screen.availHeight;
+        const sAvailWidth = screen.availWidth;
+
+        console.log(width, height, sHeight, sWidth, sAvailHeight, sAvailWidth);
 
         const md = new MobileDetect(window.navigator.userAgent);
         // console.log("mobile", md.mobile());
