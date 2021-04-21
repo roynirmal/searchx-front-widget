@@ -42,7 +42,7 @@ class Register extends React.Component {
     }
 
     componentDidMount() {
-        console.log('mounted');
+        resolutionCheck();
     }
 
     ////
