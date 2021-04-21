@@ -29,8 +29,6 @@ class Register extends React.Component {
         //     document.querySelector('#isok').innerHTML = 'OK';
         // }
 
-        resolutionCheck();
-
         return <Form
             formData={formData()}
             onComplete={this.onComplete}
@@ -41,6 +39,10 @@ class Register extends React.Component {
         
 
 
+    }
+
+    componentDidMount() {
+        console.log('mounted');
     }
 
     ////
