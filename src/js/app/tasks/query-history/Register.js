@@ -136,6 +136,10 @@ const formData = function() {
         <hr/>   `
     });
 
+    window.addEventListener('resize', (e) => {
+        console.log('window resized!');
+    })
+
     let availHeight = window.screen.availHeight;
     let outerHeight = window.outerHeight;
     
