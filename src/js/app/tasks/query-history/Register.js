@@ -158,8 +158,13 @@ const formData = function() {
             </p>-->
             
             <p>
-                <span style="background-color: #2FC987""><strong>Your browser window is of a sufficient resolution.</strong></span>
+                <span style="background-color: #2FC987;"><strong>Your browser's resolution is good.</strong></span>
                 Please keep your browser window at this resolution through the duration of the study. <strong>If you resize your browser during the study, we may have to cancel your participation.</strong>
+            </p>
+
+            <p>
+                <span style="background-color: #F16034"><strong>Please maximise your browser's window.</strong></span>
+                Your browser's window is not big enough to run this study.
             </p>
         </li>
         </ol>
