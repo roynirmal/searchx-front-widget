@@ -10,6 +10,7 @@ import SearchStore from "../../search/SearchStore";
 import SearchResultsContainer from "../../search/results/SearchResultsContainer";
 import SearchActions from '../../../actions/SearchActions';
 import QueryHistoryContainer from "../../search/features/queryhistory/QueryHistoryContainer";
+import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 
 
 class PostTest extends React.Component {
@@ -35,6 +36,7 @@ class PostTest extends React.Component {
 
     render() {
         const task = AccountStore.getTask();
+
         window.globalPage=1;
         function keepMePosted(){
             var els = document.getElementsByClassName('btn-green');
@@ -71,9 +73,9 @@ class PostTest extends React.Component {
                         <div className="SearchResultsContainer">
                             <SearchResultsContainer/>
                         </div>
-        <div className="Side">
-        <QueryHistoryContainer collaborative={this.props.collaborative} test={this.state.test}/>
-        </div> 
+        {/* <div className="Side"> */}
+        {/* <QueryHistoryContainer collaborative={this.props.collaborative} test={this.state.test}/> */}
+        {/* </div>  */}
         </div>
         )
     }
@@ -137,14 +139,8 @@ class PostTest extends React.Component {
 }
 
 const formValidation = function(sender, question) {
-    if (question.name === 'summary') {
-        const text = question.value;
-        const c = text.split(" ").length;
-
-        if (c < 100) {
-            question.error = "You have written only " + c + " words, you need to write at least 100 words to complete the exercises.";
-        }
-    }
+    console.log(sender, question);
+    return true;
 };
 
 const formData = function(topic) {
@@ -152,56 +148,33 @@ const formData = function(topic) {
     let elements = [];
 
     ////
-    let sess= localStorage.getItem("session-num") || 0 ;
-    const topickey = sess
-    sess++
-
-    elements.push({
-        type: "html",
-        name: "topic",
-        html:  `<h2> Information Need ${sess} </h2>` +
-        `<h3>Let's find out what you have learned about the topic from the last search session.</h3>` +
-        `<h3>For the information need you just searched for, provide us with two queries that will help us find relevant information.</h3>`
-    });
-    const name = "Q-"+ topic[topickey]['@number'] +"-"+ topic[topickey]['query'];
-
-    elements.push({
-        type: "html",
-        name: "information-need" + topickey,
-        html: `<p> Information need: <b><i>${topic[topickey]['narrative']}</i></b></p>` 
-    });
-    
-    elements.push({
-        title: "Query 1:",
-        name: name +' query1',
-        type: "comment",
-        inputType: "text",
-        width: 600,
-        rows: 1,
-        isRequired: true
-    });
-    elements.push({
-        title: "Query 2:",
-        name: name +' query2',
-        type: "comment",
-        inputType: "text",
-        width: 600,
-        rows: 1,
-        isRequired: true
-    });
-
-    pages.push({elements:  elements});
-
-    ////
-
-
     elements = [];
 
     elements.push({
         type: "html",
         name: "searchx-feedback-description",
-        html: "<b>We would also like you to describe your experience while using SearchX and taking part in our study. This information will help us in making SearchX better for future usage. It will also help us to analyze user experience during the study. </b>"
+        html: "<b>We would  like you to describe your experience while using \
+        SearchX and taking part in our study. This information will help us in\
+         making SearchX better for future usage. It will also help us to\
+         analyze user experience during the study. </b>"
     });
+
+    elements.push({ 
+        title: "What did you think about the position of the query history widget?",
+        name: "query-widget-position",
+        type: "rating",
+        isRequired: true,
+        minRateDescription: "Bad",
+        maxRateDescription: "Great"
+    });
+    elements.push({
+        title: "Do you have any specific comment on the query history widget?",
+        name: "query-widget-opinion",
+        type: "comment",
+        inputType: "text",
+        rows: 4,
+        isRequired: true,
+        });
    
     elements.push({
         title: "I didn't notice any inconsistencies when I used the system.",
@@ -212,7 +185,6 @@ const formData = function(topic) {
         maxRateDescription: "Agree"
     });
 
-
     elements.push({
         title: "It was easy to determine if a document was relevant to a task.",
         name: "relevance",
@@ -221,7 +193,6 @@ const formData = function(topic) {
         minRateDescription: "Disagree",
         maxRateDescription: "Agree"
     });
-
 
     elements.push({
         title: "How difficult was this task?",
@@ -233,7 +204,7 @@ const formData = function(topic) {
     });
 
     elements.push({
-        title: "Do you have any additional comments regarding SearchX?",
+        title: "Do you have any additional comments regarding this experiment?",
         name: "additional-comment",
         type: "comment",
         inputType: "text",
@@ -248,7 +219,7 @@ const formData = function(topic) {
     return {
         pages: pages,
         requiredText: "",
-        showProgressBar: "top",
+        // showProgressBar: "bottom",
         showQuestionNumbers: "off",
         completedHtml: "<h2>Thank you for taking part in our study.</h2> <h3>Follow this <a href=" + constants.completionURL + "> link</a> back to Prolific Academic to confirm your participation.</h3>" ,
     }

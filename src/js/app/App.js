@@ -36,6 +36,12 @@ import PilotSession3 from './tasks/algorithmic-mediation-pilot/Session3';
 import PilotDescription3 from './tasks/algorithmic-mediation-pilot/TaskDescription3';
 import PilotPostTest from './tasks/algorithmic-mediation-pilot/PostTest';
 
+import QHWRegister from './tasks/query-history/Register';
+import QHWDisqualified from './tasks/query-history/Disqualified';
+import QHWPostTest from './tasks/query-history/PostTest';
+import QHWSession from './tasks/query-history/Session';
+
+
 
 import RoleBasedRegister from './tasks/role-based/Register';
 import RoleBasedWait from './tasks/role-based/Wait';
@@ -48,6 +54,15 @@ export class App extends React.Component {
     
     
     render() {
+        const width  = window.outerWidth;
+        const height = window.outerHeight;
+        const sHeight = screen.height;
+        const sWidth = screen.width;
+
+        const sAvailHeight = screen.availHeight;
+        const sAvailWidth = screen.availWidth;
+
+        console.log(width, height, sHeight, sWidth, sAvailHeight, sAvailWidth);
 
         const md = new MobileDetect(window.navigator.userAgent);
         // console.log("mobile", md.mobile());
@@ -64,11 +79,11 @@ export class App extends React.Component {
         });
 
         if(!isValidBrowser){
-        //    return (<div>
-        //        <h3>Your browser does not meet our requriement:
-        //            Google Chrome version 47 (or higher) and Mozilla Firefox version 50 (or higher).
-        //            Please upgrade your browser to take part in our study</h3>
-        //    </div>)
+           return (<div>
+               <h3>Your browser does not meet our requriement:
+                   Google Chrome version 47 (or higher) and Mozilla Firefox version 50 (or higher).
+                   Please upgrade your browser to take part in our study</h3>
+           </div>)
         } 
 
         let invalid = localStorage.getItem("invalid-user") || 0;
@@ -92,12 +107,12 @@ export class App extends React.Component {
                     <Route exact path="/simple/submit" component={SimpleSubmit}/>
                     <Route path="/simple/session" component={SimpleSession}/>
 
-                    <Route exact path="/sync" component={SyncRegister}/>
-                    <Route exact path="/disq" component={Disqualified}/>
+                    <Route exact path="/qhw" component={QHWRegister}/>
+                    <Route exact path="/disq" component={QHWDisqualified}/>
                     <Route exact path="/sync/pretest" component={SyncPreTest}/>
                     <Route exact path="/sync/intermediatetest" component={SyncIntermediateTests}/>
-                    <Route exact path="/sync/posttest" component={SyncPostTest}/>
-                    <Route path="/sync/session" component={SyncSession}/>
+                    <Route exact path="/qhw/posttest" component={QHWPostTest}/>
+                    <Route path="/qhw/session" component={QHWSession}/>
 
                     <Route exact path="/covidnosearch" component={CovidNoSearchRegister}/>
                     <Route exact path="/disq" component={CovidNoSearchDisqualified}/>

@@ -152,9 +152,10 @@ export default class SearchResultsContainer extends React.Component {
     ////
 
     isCollapsible(result) {
-        return this.state.distributionOfLabour
-            && !this.state.tutorial
-            && (result.metadata.bookmark || result.metadata.exclude);
+        // return this.state.distributionOfLabour
+        //     && !this.state.tutorial
+        //     && (result.metadata.bookmark || result.metadata.exclude);
+        return false
     }
 
     render() {

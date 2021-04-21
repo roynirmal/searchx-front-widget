@@ -78,6 +78,7 @@ const SearchResults = function ({
     let lastCollapsedResults = [];
     let lastCollapsedResultsComponents = [];
     for (const [index, result] of results.entries()) {
+        if (index < 8){
         const collapsedResult = distributionOfLabour && collapsed[Helpers.getId(result)];
 
         const resultProps = {
@@ -116,7 +117,7 @@ const SearchResults = function ({
         } else {
             list.push(<SearchResultContainer {...resultProps} key={Helpers.getId(result)} index={index}/>);
         }
-
+    }
 
     }
     if (lastCollapsedResults.length > 0) {
@@ -138,24 +139,25 @@ const SearchResults = function ({
                 {config.interface.timeIndicator && results.length > 0 &&
                 <div className="time"> {timeIndicator}</div>
                 }
-                {distributionOfLabour === "unbookmarkedSoft" &&
-                <div className="collapsedText">
-                    {/* <Button className="allCollapsedResultsButton" onClick={showAllCollapsedResults}
-                            disabled={allBookmarkedResultsShown}>
-                        Show all hidden results
-                    </Button> */}
-                    <Button variant="light" className="allCollapsedResultsButton" onClick={hideAllCollapsedResults}
-                            disabled={allBookmarkedResultsHidden}>
-                        Hide all saved results
-                    </Button>
-                </div>
+                {
+                // distributionOfLabour === "unbookmarkedSoft" &&
+                // <div className="collapsedText">
+                //     {/* <Button className="allCollapsedResultsButton" onClick={showAllCollapsedResults}
+                //             disabled={allBookmarkedResultsShown}>
+                //         Show all hidden results
+                //     </Button> */}
+                //     <Button variant="light" className="allCollapsedResultsButton" onClick={hideAllCollapsedResults}
+                //             disabled={allBookmarkedResultsHidden}>
+                //         Hide all saved results
+                //     </Button>
+                // </div>
                 }
                 <div className="list">
                     {list}
                 </div>
             </div>
 
-            {pagination}
+            {/* {pagination} */}
         </div>
     )
 };

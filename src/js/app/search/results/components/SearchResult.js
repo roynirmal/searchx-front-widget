@@ -44,9 +44,9 @@ const SearchResult = function ({
         index: index,
         metadata: formatMetadata(result.metadata),
         bookmarkButton: bookmarkButton,
-        excludeButton: excludeButton,
+        // excludeButton: excludeButton,
         urlClickHandler: urlClickHandler,
-        hideCollapsedResultsHandler: hideCollapsedResultsHandler,
+        // hideCollapsedResultsHandler: hideCollapsedResultsHandler,
         isCollapsible: isCollapsible,
         visited: visited
     };
@@ -56,7 +56,7 @@ const SearchResult = function ({
     return (
         <Collapse in={!collapsed}>
             <div>
-                <div className="SearchResult">
+                <div className="SearchResult" data-rank={props.index + 1} data-id={result.id} data-collectionid={result.collectionId}>
                     {view}
                 </div>
             </div>
@@ -96,11 +96,11 @@ function formatMetadata(metadata) {
         let formattedTime = date.toLocaleDateString();
         if (formattedTime === now) formattedTime = date.toLocaleTimeString();
 
-        elements.push(
-            <span>
-                <i className="fa fa-bookmark"/> <img src={iconUrl} alt={"User " + md5(metadata.bookmark.userId)}/>  {formattedTime}
-            </span>
-        );
+        // elements.push(
+        //     <span>
+        //         <i className="fa fa-bookmark"/> <img src={iconUrl} alt={"User " + md5(metadata.bookmark.userId)}/>  {formattedTime}
+        //     </span>
+        // );
     }
 
     return <div className="metadata">{elements}</div>;

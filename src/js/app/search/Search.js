@@ -12,6 +12,7 @@ import Chat from "./features/chat/Chat";
 import config from "../../config";
 import MobileDetect from 'mobile-detect';
 import Alert from "react-s-alert";
+import AccountStore from "../../stores/AccountStore"
 
 class Search extends React.Component {
     constructor(props) {
@@ -41,7 +42,14 @@ class Search extends React.Component {
         //     Chat();
         // };
         document.addEventListener('visibilitychange', this.handleVisibilityChange);
+
+        // if (window.hasOwnProperty('LogUI')) {
+        //     this.startLogUI();
+        // }
     }
+
+    
+    
 
     componentWillUnmount() {
         if (this.props.lastSession && config.interface.chat && this.props.collaborative) {
@@ -54,26 +62,33 @@ class Search extends React.Component {
             element.parentElement.removeChild(element);
         };
         document.removeEventListener('visibilitychange', this.handleVisibilityChange, this.checkDevice);
+
+        // if (window.hasOwnProperty('LogUI')) {
+        //     if (window.LogUI.isActive()) {
+        //         window.LogUI.stop();
+        //     }
+        // }
     }
 
     render() {
-       
+       localStorage.setItem("variant", "ur")
         return (
             <div className="Search">
                 {this.checkDevice()}
                 <SearchHeaderContainer timer={this.props.timer} statusbar={this.props.statusbar} showAccountInfo={this.props.showAccountInfo}/>
 
                 <div className="Content">
+                <QueryHistoryContainer collaborative={this.props.collaborative}/>
                     <div className="Main">
                         <div className="SearchResultsContainer">
                             <SearchResultsContainer/>
                         </div>
                     </div>
 
-                    <div className="Side">
-                        <QueryHistoryContainer collaborative={this.props.collaborative}/>
-                        <BookmarkContainer collaborative={this.props.collaborative}/>
-                    </div>
+                    {/* <div className="Side"> */}
+                        {/* <QueryHistoryContainer collaborative={this.props.collaborative}/> */}
+                        {/* <BookmarkContainer collaborative={this.props.collaborative}/> */}
+                    {/* </div> */}
 
                     {this.props.taskDescription && (
                         <div className="Side">
@@ -81,6 +96,7 @@ class Search extends React.Component {
                         </div>
                     )}
                 </div>
+               
                 <Chat/>
                 <div className="text-center">
                     <p className="Footer">
