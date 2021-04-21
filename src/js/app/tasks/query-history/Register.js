@@ -89,7 +89,16 @@ class Register extends React.Component {
 }
 
 var resolutionCheck = function() {
-    console.log('check resolution!');
+    let availHeight = window.screen.availHeight;
+    let outerHeight = window.outerHeight;
+
+    if (availHeight - outerHeight > 10 ){
+        window.querySelector('#resolution-okay').style.display = 'hidden';
+        window.querySelector('#resolution-bad').style.display = 'visible';
+    } else {
+        window.querySelector('#resolution-okay').style.display = 'visible';
+        window.querySelector('#resolution-bad').style.display = 'hidden';
+    }
 }
 
 const formData = function() {
