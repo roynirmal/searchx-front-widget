@@ -18,7 +18,7 @@ class Register extends React.Component {
     }
 
     render() {
-        console.log('render');
+        resolutionCheck();
         return <Form
             formData={formData()}
             onComplete={this.onComplete}
@@ -176,9 +176,6 @@ const formData = function() {
                 <span style="background-color: #F16034"><strong>Please maximise your browser's window.</strong></span>
                 Your browser's window is not big enough to run this study.
             </p>
-            <script>
-                console.log('!!!!');
-            <script>
         </li>
         </ol>
         <hr/>   `
