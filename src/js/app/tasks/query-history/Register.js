@@ -93,11 +93,11 @@ var resolutionCheck = function() {
     let outerHeight = window.outerHeight;
 
     if (availHeight - outerHeight > 10 ){
-        window.querySelector('#resolution-okay').style.display = 'hidden';
-        window.querySelector('#resolution-bad').style.display = 'visible';
+        document.querySelector('#resolution-okay').style.display = 'hidden';
+        document.querySelector('#resolution-bad').style.display = 'visible';
     } else {
-        window.querySelector('#resolution-okay').style.display = 'visible';
-        window.querySelector('#resolution-bad').style.display = 'hidden';
+        document.querySelector('#resolution-okay').style.display = 'visible';
+        document.querySelector('#resolution-bad').style.display = 'hidden';
     }
 }
 
