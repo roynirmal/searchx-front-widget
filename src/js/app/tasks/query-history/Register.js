@@ -43,6 +43,10 @@ class Register extends React.Component {
 
     }
 
+    componentDidMount() {
+        resolutionCheck();
+    }
+
     ////
 
     onComplete(data) {
