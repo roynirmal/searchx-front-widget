@@ -85,9 +85,11 @@ var resolutionCheck = function() {
     if (availHeight - outerHeight > 10 ){
         document.querySelector('#resolution-okay').hidden = true;
         document.querySelector('#resolution-bad').hidden = false;
+        document.querySelector('input[type=button]').disabled = false;
     } else {
         document.querySelector('#resolution-okay').hidden = false;
         document.querySelector('#resolution-bad').hidden = true;
+        document.querySelector('input[type=button]').disabled = true;
     }
 }
 
