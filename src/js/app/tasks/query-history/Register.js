@@ -29,6 +29,11 @@ class Register extends React.Component {
 
     componentDidMount() {
         resolutionCheck();
+        window.addEventListener('resize', resolutionCheck);
+    }
+
+    componentWillUnmount() {
+        console.log('bye bye');
     }
 
     ////
@@ -170,8 +175,6 @@ const formData = function() {
         </ol>
         <hr/>   `
     });
-    
-    window.addEventListener('resize', resolutionCheck);
 
 
     pages.push({elements:  elements});
