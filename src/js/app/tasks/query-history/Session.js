@@ -255,10 +255,10 @@ class Session extends React.PureComponent {
         const sessionNum = localStorage.getItem("session-num") || 0;
 
         const timer = (
-            <div style={{marginTop: '10px', textAlign: 'center'}}>
-                <Timer start={this.state.start} duration={constants.taskDuration} onFinish={this.onFinish} style={{fontSize: '2em'}} showRemaining={false}/>
+            <div style={{marginTop: '20px', textAlign: 'center'}}>
+                <Timer start={this.state.start} duration={constants.taskDuration} onFinish={this.onFinish} style={{fontSize: '2em', float: 'right', paddingRight:'180px', paddingTop: '25px'}} showRemaining={false}/>
                 
-                <Link className={"btn btn-primary" + (this.state.finished ? '' : ' disabled')} to={"/qhw/posttest"} role="button">
+                <Link className={"btn btn-primary" + (this.state.finished ? '' : ' disabled')} to={"/qhw/posttest"} role="button" style={{float: 'left', marginLeft: '5px', marginTop: '30px'}}>
                         To Final Test
                 </Link>
             </div>

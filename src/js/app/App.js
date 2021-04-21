@@ -109,7 +109,8 @@ export class App extends React.Component {
                 <h3>You have been disqualified from the study.</h3>
             </div>)
         }
-        
+
+
 
 
         return (

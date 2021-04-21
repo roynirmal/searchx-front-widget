@@ -12,20 +12,23 @@ class Form extends React.PureComponent {
         this.handleComplete = this.handleComplete.bind(this);
         this.handleCutCopyPaste = this.handleCutCopyPaste.bind(this);
         this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
+        this.handleResize = this.handleResize.bind(this);
     }
 
     componentDidMount() {
         document.addEventListener('visibilitychange', this.handleVisibilityChange);
+        window.addEventListener('resize', this.handleResize);
     }
 
     componentWillUnmount() {
         document.removeEventListener('visibilitychange', this.handleVisibilityChange);
+        
     }
 
     render() {
         Survey.Survey.cssType = "bootstrap";
         Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
-        
+
 
         let survey = new Survey.Model(this.props.formData);
         survey.completedHtml = `<div class='message'>${survey.completedHtml}</div>`;
@@ -40,6 +43,15 @@ class Form extends React.PureComponent {
     }
 
     ////
+    handleResize(){
+        
+            console.log("resizing")
+            let availHeight = window.screen.availHeight;
+            let outerHeight = window.outerHeight;
+            
+            this.props.onResize(availHeight - outerHeight);
+
+    }
 
     handleComplete(res) {
         this.props.onComplete(res.data);
@@ -75,12 +87,14 @@ Form.propTypes = {
     onComplete: PropTypes.func.isRequired,
     onSwitchPage: PropTypes.func,
     disableCopy: PropTypes.bool,
+    onResize: PropTypes.func,
 };
 
 Form.defaultProps = {
     formValidation: () => {},
     onSwitchPage: () => {},
     disableCopy: false,
+    onResize: () => {}
 };
 
 export default Form;

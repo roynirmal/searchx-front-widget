@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "../components/form/Form";
 import constants from "./constants";
-
+import Alert from "react-s-alert";
 import {log} from "../../../utils/Logger";
 import {LoggerEventTypes} from "../../../utils/LoggerEventTypes";
 
@@ -14,9 +14,11 @@ class Register extends React.Component {
         super(props);
 
         this.onComplete = this.onComplete.bind(this);
+        this.onResize = this.onResize.bind(this);
     }
 
     render() {
+
        
         // if (availHeight - outerHeight > 10) {
         //     document.querySelector('#isok').style.background = 'red';
@@ -30,6 +32,7 @@ class Register extends React.Component {
         return <Form
             formData={formData()}
             onComplete={this.onComplete}
+            onResize={this.onResize}
         /> 
         
         
@@ -62,7 +65,29 @@ class Register extends React.Component {
             }
         });
     }
+    onResize(thresh){
+
+        console.log("resizing")
+            if (thresh > 10 ){
+                Alert.warning(`Your browser size is NOT OK! `, {
+                    position: 'bottom',
+                    effect: 'scale',
+                    beep: true,
+                    timeout: "none"
+                });
+            } else {
+                Alert.success(`Your browser size is OK! You can continue!`, {
+                    position: 'bottom',
+                    effect: 'scale',
+                    beep: true,
+                    timeout: "none"
+                });
+                
+            }
+        
+    }
 }
+
 
 const formData = function() {
     let pages = [];
@@ -137,30 +162,25 @@ const formData = function() {
         </ol>
         <hr/>   `
     });
-
-    window.addEventListener('resize', (e) => {
-        console.log('window resized!');
-
-        document.querySelector('#resolution-message').style.backgroundColor = 'red';
-    })
-
-    let availHeight = window.screen.availHeight;
-    let outerHeight = window.outerHeight;
+    // let elem;
+   
+    // console.log(elem)
+    // if (elem === 'good' ){
+    //      elements.push({
+    //             type: "html",
+    //             name: "screen",
+    //             html: `<span  style="background-color: #2FC987"> Your browser height is OK! You are good to proceed! </span>`
+    //         });
+    // } else {
+    //     elements.push({
+    //         type: "html",
+    //         name: "screen",
+    //         html: `<span  style="background-color: #2FC987"> Your browser height is OK! You are good to proceed! </span>`
+    //     });
+    // }
     
-    if (availHeight - outerHeight > 10 ){
-        elements.push({
-            type: "html",
-            name: "screen",
-            html: `<span style="background-color: #F16034"> Your browser height is NOT OK  !! </span>`
-        });
-    } else {
-        elements.push({
-            type: "html",
-            name: "screen",
-            html: `<span  style="background-color: #2FC987"> Your browser height is OK! You are good to proceed! </span>`
-        });
-    }
     
+    // elements.push(elem)
 
     pages.push({elements:  elements});
 
