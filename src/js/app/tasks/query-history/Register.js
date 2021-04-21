@@ -22,7 +22,6 @@ class Register extends React.Component {
         return <Form
             formData={formData()}
             onComplete={this.onComplete}
-            resolutionCheck={resolutionCheck}
         /> 
 
     }
@@ -83,14 +82,20 @@ var resolutionCheck = function() {
     let availHeight = window.screen.availHeight;
     let outerHeight = window.outerHeight;
 
-    if (availHeight - outerHeight > 10 ){
-        document.querySelector('#resolution-okay').hidden = true;
-        document.querySelector('#resolution-bad').hidden = false;
-        document.querySelector('input[type=button]').disabled = true;
-    } else {
-        document.querySelector('#resolution-okay').hidden = false;
-        document.querySelector('#resolution-bad').hidden = true;
-        document.querySelector('input[type=button]').disabled = false;
+    let okay = document.querySelector('#resolution-okay');
+    let bad = document.querySelector('#resolution-bad');
+    let button = document.querySelector('input[type=button]');
+
+    if (okay) {
+        if ((availHeight - outerHeight > 10)){
+            okay.hidden = true;
+            bad.hidden = false;
+            button.disabled = true;
+        } else {
+            document.querySelector('#resolution-okay').hidden = false;
+            document.querySelector('#resolution-bad').hidden = true;
+            document.querySelector('input[type=button]').disabled = false;
+        }
     }
 }
 
