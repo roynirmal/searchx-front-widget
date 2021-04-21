@@ -99,6 +99,8 @@ var resolutionCheck = function() {
         document.querySelector('#resolution-okay').hidden = true;
         document.querySelector('#resolution-bad').hidden = false;
     }
+
+    console.log('resCheck');
 }
 
 const formData = function() {
