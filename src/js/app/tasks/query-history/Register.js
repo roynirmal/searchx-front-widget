@@ -112,10 +112,7 @@ const formData = function() {
                 </p>
             </li>
         </ol>
-        <hr/>
-        <p><b>Finally: please read the topic description at the top of this page one more time. It will NOT be available for you on the next screen. Please
-        keep it in mind.</b></p>
-        `
+        <hr/>   `
     });
 
     pages.push({elements:  elements});
