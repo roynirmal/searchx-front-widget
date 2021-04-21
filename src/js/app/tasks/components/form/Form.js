@@ -34,7 +34,7 @@ class Form extends React.PureComponent {
         return (
             <FormContainer>
                 <div onPaste={this.handleCutCopyPaste} onCut={this.handleCutCopyPaste} onCopy={this.handleCutCopyPaste}>
-                    <Survey.Survey model={survey} onComplete={this.handleComplete} onValidateQuestion={this.props.formValidation}/>
+                    <Survey.Survey model={survey} onComplete={this.handleComplete} onValidateQuestion={this.props.formValidation} onAfterRenderQuestion={console.log("!!!!")}/>
                 </div>
             </FormContainer>
         );
