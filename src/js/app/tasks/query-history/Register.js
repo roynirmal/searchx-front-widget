@@ -122,15 +122,17 @@ const formData = function() {
             </li>
             <li> 
                 <p>
-                Keep your searches on the topic and avoid searches on unrelated topics.
+                <strong>Keep your searches on the topic and avoid searches on unrelated topics.</strong>
                 We will consider off-topic searches, like tomorrow's weather, news on politics, or movie reviews of the Black Widow movie, as off-topic and may cancel your participation.
                 </p>
             </li>
             <li> 
-            <p>
+            <!--<p>
             Please make sure the height of your browser is maximised and <b>do not</b> resize your browser during the course of the study. If the last line says 'Your browser height is NOT OK', you need to maximise your browser size
-            and refresh the page. <span id="resolution-message">msg</span> If the browser height is okay, the last line will say 'Your browser height is OK!'. <strong>We may need to cancel your study if you resize your browser during the study.</strong>
-            </p>
+            and refresh the page. If the browser height is okay, the last line will say 'Your browser height is OK!'. <strong>We may need to cancel your study if you resize your browser during the study.</strong>
+            </p>-->
+            
+            <p><span style="background-color: #2FC987""><strong>Your browser window is of a sufficient resolution.</strong></span></p> Please keep your browser window at this resolution through the duration of the study. <strong>If you resize your browser during the study, we may have to cancel your participation.</strong>
         </li>
         </ol>
         <hr/>   `
