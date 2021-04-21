@@ -180,6 +180,7 @@ const formData = function() {
     });
     
     window.addEventListener('resize', resolutionCheck);
+    resolutionCheck();
 
 
     pages.push({elements:  elements});
