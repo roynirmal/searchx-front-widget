@@ -92,9 +92,9 @@ var resolutionCheck = function() {
             bad.hidden = false;
             button.disabled = true;
         } else {
-            document.querySelector('#resolution-okay').hidden = false;
-            document.querySelector('#resolution-bad').hidden = true;
-            document.querySelector('input[type=button]').disabled = false;
+            okay.hidden = false;
+            bad.hidden = true;
+            button.disabled = false;
         }
     }
 }
