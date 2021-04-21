@@ -53,14 +53,7 @@ import Chat from './search/features/chat/Chat';
 
 export class App extends React.Component {
     
-    ifnotmax() {
-        Alert.error('Please maximize your window to complete our study', {
-            position: 'top-right',
-            effect: 'scale',
-            beep: true,
-            timeout: "none"
-        });
-    }
+
     
     render() {
  
@@ -78,7 +71,7 @@ export class App extends React.Component {
                 </h3>
             </div>)
         }
-
+   
 
 
         const md = new MobileDetect(window.navigator.userAgent);

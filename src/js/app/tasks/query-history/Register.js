@@ -69,14 +69,14 @@ class Register extends React.Component {
 
         console.log("resizing")
             if (thresh > 10 ){
-                Alert.warning(`Your browser size is NOT OK! `, {
+                Alert.warning(`Your browser height is NOT OK! `, {
                     position: 'bottom',
                     effect: 'scale',
                     beep: true,
                     timeout: "none"
                 });
             } else {
-                Alert.success(`Your browser size is OK! You can continue!`, {
+                Alert.success(`Your browser height is OK! You can continue!`, {
                     position: 'bottom',
                     effect: 'scale',
                     beep: true,
@@ -153,8 +153,8 @@ const formData = function() {
             </li>
             <li> 
             <p>
-            Please make sure the height of your browser is maximised and <b>do not</b> resize your browser during the course of the study. If the last line says 'Your browser height is NOT OK', you need to maximise your browser size
-            and refresh the page. <span id="resolution-message">msg</span> If the browser height is okay, the last line will say 'Your browser height is OK!'. <strong>We may need to cancel your study if you resize your browser during the study.</strong>
+            Please make sure the height of your browser is maximised and <b>do not</b> resize your browser during the course of the study. If the pop up says 'Your browser height is NOT OK', you need to maximise your browser size
+            and refresh the page. <span id="resolution-message">msg</span> If the browser height is okay, the pop up will say 'Your browser height is OK!'. <strong> We may need to cancel your study if you resize your browser during the study.</strong>
             </p>
         </li>
         </ol>
