@@ -29,6 +29,8 @@ class Register extends React.Component {
         //     document.querySelector('#isok').innerHTML = 'OK';
         // }
 
+        resolutionCheck();
+
         return <Form
             formData={formData()}
             onComplete={this.onComplete}
@@ -99,8 +101,6 @@ var resolutionCheck = function() {
         document.querySelector('#resolution-okay').hidden = true;
         document.querySelector('#resolution-bad').hidden = false;
     }
-
-    console.log('resCheck');
 }
 
 const formData = function() {
@@ -176,10 +176,6 @@ const formData = function() {
                 <span style="background-color: #F16034"><strong>Please maximise your browser's window.</strong></span>
                 Your browser's window is not big enough to run this study.
             </p>
-
-            <script>
-                resolutionCheck();
-            </script>
         </li>
         </ol>
         <hr/>   `
