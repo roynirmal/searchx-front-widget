@@ -184,6 +184,8 @@ const formData = function() {
 
     pages.push({elements:  elements});
 
+    resolutionCheck();
+
     ////
 
     elements = [];
