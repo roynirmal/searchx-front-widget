@@ -12,6 +12,7 @@ import Chat from "./features/chat/Chat";
 import config from "../../config";
 import MobileDetect from 'mobile-detect';
 import Alert from "react-s-alert";
+import AccountStore from "../../stores/AccountStore"
 
 class Search extends React.Component {
     constructor(props) {
@@ -41,7 +42,14 @@ class Search extends React.Component {
         //     Chat();
         // };
         document.addEventListener('visibilitychange', this.handleVisibilityChange);
+
+        // if (window.hasOwnProperty('LogUI')) {
+        //     this.startLogUI();
+        // }
     }
+
+    
+    
 
     componentWillUnmount() {
         if (this.props.lastSession && config.interface.chat && this.props.collaborative) {
@@ -54,6 +62,12 @@ class Search extends React.Component {
             element.parentElement.removeChild(element);
         };
         document.removeEventListener('visibilitychange', this.handleVisibilityChange, this.checkDevice);
+
+        // if (window.hasOwnProperty('LogUI')) {
+        //     if (window.LogUI.isActive()) {
+        //         window.LogUI.stop();
+        //     }
+        // }
     }
 
     render() {

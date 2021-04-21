@@ -82,6 +82,14 @@ export default class SearchResultContainer extends React.Component {
             index: index,
             session: localStorage.getItem("session-num") || 0,
         });
+
+        if (window.hasOwnProperty('LogUI') && window.LogUI.isActive()) {
+            window.LogUI.logCustomMessage({
+                eventType: 'bookmark',
+                rank: index,
+                action: action,
+            });
+        }
     };
 
     excludeClickHandler() {

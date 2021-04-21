@@ -43,7 +43,7 @@ class Register extends React.Component {
             console.log("here?")
             console.log(res);
             if (res) {
-                this.props.history.push('/sync/session');
+                this.props.history.push('/qhw/session');
             }
         });
     }
@@ -63,7 +63,7 @@ const formData = function() {
         type: "html",
         name: "start",
         html: `
-        <h3>Find the relevant documents!</h3>
+        <h3> <img src ="/img/search.png" width="50" height="50">Find the relevant documents!</h3>
         
 
         <hr/>
@@ -84,7 +84,7 @@ const formData = function() {
         hamper your chances of receiving a bonus.</b>
         <hr/>
 
-        <h4> More information on the topic:</h4>
+        <h4><img src ="/img/list.png" width="50" height="50"> More information on the topic:</h4>
             <p>A few years ago, a debate arose about the conservation of the 
             spotted owl in America, highlighting the U.S. efforts to prevent 
             the extinction of wildlife species. What is not well known is the 
@@ -103,15 +103,14 @@ const formData = function() {
         again on the right-hand side of the search interface. </br>
         Our search interface has a few items that should help you on your task
         –-we will introduce them to you on the next screen. </p>
-    aa
         
         <p>You must search for documents, read them and mark the 
-        ones that you think are relevant to the topic.
-        When you are satisfied, you can click on the 
+        ones that you think are relevant to the topic. We ask you to search for a minimum of 10 minutes.
+        After 10 minutes, when you are satisfied, you can click on the 
         <span style="background-color: #00A6D3"><font color="white">To Final Test</span></font>
         button to finish your session and go to a quick questionnaire about your experience.</p>
 
-        <p> We have a few important points: </p>
+        <p>  <img src ="/img/error.png" width="50" height="50"> We have a few important points: </p>
         <ol type="-">
             <li>
                 <p>
@@ -123,7 +122,7 @@ const formData = function() {
                 <p>
                 <b>You cannot interact with the search results. </b></br>
                 We require you to judge the relevance of the document based on the snippet presented.
-                You cannot click on the document title to open it. If you want more information, submit another query.
+                You cannot click on the document title to open it. If you want more information, submit another query or resubmit a previous query.
                 </p>
             </li>
             <li> 
@@ -134,7 +133,7 @@ const formData = function() {
             </li>
         </ol>
         <hr/>
-        <p>Finally, a reminder before you continue: please read the task description carefully on the right-hand side of the search interface. </p>
+        <p>Finally, a reminder before you continue: please read the task description carefully. </p>
         `
     });
 

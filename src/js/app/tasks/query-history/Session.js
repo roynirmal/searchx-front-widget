@@ -9,6 +9,7 @@ import {LoggerEventTypes} from '../../../utils/LoggerEventTypes';
 import AccountStore from "../../../stores/AccountStore";
 import IntroStore from "../../../stores/IntroStore";
 import Alert from "react-s-alert";
+import Timer from "../components/Timer";
 
 class Session extends React.PureComponent {
     constructor(props) {
@@ -25,10 +26,16 @@ class Session extends React.PureComponent {
     componentDidMount() {
         let td = "<h3> Your task </h3><p> We want you to search and find \
         relevant documents for the topic <b>Wildlife Extinction</b> in this \
-        task. </p>A brief description of the topic and what we mean by \
-        relevant document will  be shown on the right side of your screen. \
-        Read it carefully and then you can use our search engine to search\
-         for relevant documents.</p>";
+        task. </p><p>A few years ago, a debate arose about the conservation of the \
+        spotted owl in America, highlighting the U.S. efforts to prevent \
+        the extinction of wildlife species. What is not well known is the \
+        effort of other countries to prevent the demise of species native \
+        to their countries.  What other countries have begun efforts to \
+        prevent such declines? </p> <p><b>A relevant item will specify the country, the involved \
+        species, and steps taken to save the species.</b></p> <p>We will be giving bonuses to the \
+         participants that identify the most relevant documents, but only those. We do not expect you to find all relevant documents. \
+         Marking non-relevant documents will therefore hamper your chances of receiving a bonus.</p>" ;
+
         const variant = localStorage.getItem('variant');
         const tip_location = `.QueryHistory .${variant}`
         const introSteps = [
@@ -75,10 +82,199 @@ class Session extends React.PureComponent {
                 });
 
         });
+        if (window.hasOwnProperty('LogUI')) {
+            this.startLogUI();
+        }
 
     }
 
-    
+    startLogUI() {
+        let configurationObject = {
+            logUIConfiguration: {
+                endpoint: 'ws://logui.ewi.tudelft.nl/ws/endpoint/',
+                authorisationToken: 'eyJ0eXBlIjoibG9nVUktYXV0aG9yaXNhdGlvbi1vYmplY3QiLCJhcHBsaWNhdGlvbklEIjoiNjg2OGRkZDEtODNhYy00NTJlLTk2ZDEtNjJkZDg5OWJlNTUzIiwiZmxpZ2h0SUQiOiI0NWJlNGFkNS0yNDQ0LTRlOTItYTA0My05ZmQ0YmZhYWI4ZmUifQ:1lYafK:1cG6yM47tk2vv1hSuhuAsxVYZbDGDBvenrjpvbPKjwI',
+                verbose: true,
+
+                browserEvents: {
+                    blockEventBubbling: true,
+                    eventsWhileScrolling: true,
+                    URLChanges: true,
+                    contextMenu: true,
+                    pageFocus: true,
+                    trackCursor: false,
+                    cursorUpdateFrequency: 2000,
+                    cursorLeavingPage: true,
+                    pageResize: true,
+                }
+            },
+            applicationSpecificData: {
+                userId: AccountStore.getUserId(),
+                groupId: AccountStore.getGroupId(),
+            },
+            trackingConfiguration: {
+                // Form and query box
+                'query-box-hoverin': {
+                    selector: 'form input',
+                    event: 'mouseenter',
+                    name: 'QUERY_BOX_MOUSE_ENTER',
+                },
+
+                'query-box-focus': {
+                    selector: 'form input',
+                    event: 'focus',
+                    name: 'QUERY_BOX_FOCUS',
+                },
+
+                'query-box-blur': {
+                    selector: 'form input',
+                    event: 'blur',
+                    name: 'QUERY_BOX_BLUR',
+                },
+
+                'query-box-keypress': {
+                    selector: 'form input',
+                    event: 'keyup',
+                    name: 'QUERY_BOX_KEY',
+                    metadata: [
+                        {
+                            nameForLog: 'QUERY_STRING',
+                            sourcer: 'elementProperty',
+                            lookFor: 'value',
+                        }
+                    ]
+                },
+
+                'form-submission': {
+                    selector: 'form',
+                    event: 'formSubmission',
+                    name: 'FORM_SUBMISSION',
+                    properties: {
+                        includeValues: [
+                            {
+                                nameForLog: 'submittedQuery',
+                                sourcer: 'elementProperty',
+                                selector: 'form input',
+                                lookFor: 'value',
+                            }
+                        ]
+                    }
+                },
+
+                // QHW box hover in/out
+                'qhw-hover': {
+                    selector: '.QueryHistory .tl',
+                    event: 'mouseHover',
+                    properties: {
+                        mouseenter: {
+                            name: 'QHW_MOUSE_ENTER',
+                        },
+                        mouseleave: {
+                            name: 'QHW_MOUSE_LEAVE',
+                        }
+                    },
+                },
+
+                // QHW previous query hover in/out
+                'qhw-hover-item': {
+                    selector: '.QueryHistory * .list .item .text a',
+                    event: 'mouseHover',
+                    properties: {
+                        mouseenter: {
+                            name: 'QHW_QUERY_MOUSE_ENTER',
+                        },
+                        mouseleave: {
+                            name: 'QHW_QUERY_MOUSE_LEAVE',
+                        }
+                    },
+                    metadata: [
+                        {
+                            nameForLog: 'QUERY',
+                            sourcer: 'elementAttribute',
+                            lookFor: 'data-query',
+                        }
+                    ]
+                },
+
+                // QHW previous query click
+                'qhw-click-item': {
+                    selector: '.QueryHistory * .list .item .text a',
+                    event: 'click',
+                    name: 'QHW_QUERY_CLICK',
+                },
+
+                // QHW scrolling
+                'qhw-scrolling': {
+                    selector: '.QueryHistory *',
+                    event: 'scrollable',
+                    properties: {
+                        scrollStart: {
+                            name: 'QHW_SCROLL_START',
+                        },
+                        scrollEnd: {
+                            name: 'QHW_SCROLL_END',
+                        },
+                    },
+                },
+
+                // Search result hover in/out
+                'result-hover': {
+                    selector: '.SearchResults .list > div div.SearchResult',
+                    event: 'mouseHover',
+                    properties: {
+                        mouseenter: {
+                            name: 'RESULT_MOUSE_ENTER',
+                        },
+                        mouseleave: {
+                            name: 'RESULT_MOUSE_LEAVE',
+                        }
+                    },
+                    metadata: [
+                        {
+                            nameForLog: 'ID',
+                            sourcer: 'elementAttribute',
+                            lookFor: 'data-id',
+                        },
+                        {
+                            nameForLog: 'COLLECTION_ID',
+                            sourcer: 'elementAttribute',
+                            lookFor: 'data-collectionid',
+                        },
+                        {
+                            nameForLog: 'RANK',
+                            sourcer: 'elementAttribute',
+                            lookFor: 'data-rank',
+                        }
+                    ]
+                },
+
+                // Search result click
+                'result-click': {
+                    selector: '.SearchResults .list > div div.SearchResult div div h2 a',
+                    event: 'click',
+                    name: 'RESULT_CLICK',
+                },
+                
+                // Rating hover in/out
+                'result-rating-hover': {
+                    selector: '.SearchResults .list > div div.SearchResult div span.rating',
+                    event: 'mouseHover',
+                    properties: {
+                        mouseenter: {
+                            name: 'RESULT_RATING_MOUSE_ENTER',
+                        },
+                        mouseleave: {
+                            name: 'RESULT_RATING_MOUSE_LEAVE',
+                        }
+                    },
+                },
+
+
+            },
+        };
+
+        window.LogUI.init(configurationObject);
+    }
+
 
     render() {
         const task = AccountStore.getTask();
@@ -86,8 +282,10 @@ class Session extends React.PureComponent {
         const sessionNum = localStorage.getItem("session-num") || 0;
 
         const timer = (
-            <div style={{marginTop: '10px', textAlign: 'center'}}>                
-                <Link className={"btn btn-primary" } to={"/QHWPostTest/posttest"} role="button">
+            <div style={{marginTop: '10px', textAlign: 'center'}}>
+                <Timer start={this.state.start} duration={constants.taskDuration} onFinish={this.onFinish} style={{fontSize: '2em'}} showRemaining={false}/>
+                
+                <Link className={"btn btn-primary" + (this.state.finished ? '' : ' disabled')} to={"/qhw/posttest"} role="button">
                         Finish
                 </Link>
             </div>
@@ -125,7 +323,7 @@ class Session extends React.PureComponent {
             <div>
                 <TaskedSession 
                 timer= {timer} 
-                taskDescription={taskDescription} 
+                // taskDescription={taskDescription} 
                 onSwitchPage={this.onSwitchPage}
                 lastSession={false} 
                 firstSession={false}/>
@@ -137,12 +335,10 @@ class Session extends React.PureComponent {
 
     onFinish() {
         // if (localStorage.session ==1):
-        let sessionNum = localStorage.getItem("session-num") || 0;
-        
-        sessionNum++ 
-
-        localStorage.setItem("session-num", sessionNum);
-        this.setState({finished: true})
+        localStorage.setItem("variant", "ur")
+        this.setState({
+            finished: true
+        });;
     }
     
     onLeave() {

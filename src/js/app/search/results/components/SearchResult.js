@@ -56,7 +56,7 @@ const SearchResult = function ({
     return (
         <Collapse in={!collapsed}>
             <div>
-                <div className="SearchResult">
+                <div className="SearchResult" data-rank={props.index + 1} data-id={result.id} data-collectionid={result.collectionId}>
                     {view}
                 </div>
             </div>

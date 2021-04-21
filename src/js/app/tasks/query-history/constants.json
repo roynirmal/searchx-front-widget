@@ -2,9 +2,9 @@
     "taskId": "query-history-widget",
     "groupSize": 1,
     "topicsSize": 1,
-    "taskDuration": 100,
+    "taskDuration": 10,
     "waitDuration": 20,
-    "switchPageLimit": 500,
+    "switchPageLimit": 300,
     "completionURL": "https://app.prolific.co/submissions/complete?cc=7AFE9A89",
     "choices": [
         {
