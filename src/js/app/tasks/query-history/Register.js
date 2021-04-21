@@ -14,7 +14,7 @@ class Register extends React.Component {
         super(props);
 
         this.onComplete = this.onComplete.bind(this);
-        this.onResize = this.onResize.bind(this);
+        // this.onResize = this.onResize.bind(this);
     }
 
     render() {
@@ -22,7 +22,7 @@ class Register extends React.Component {
         return <Form
             formData={formData()}
             onComplete={this.onComplete}
-            onResize={this.onResize}
+            //onResize={this.onResize}
         /> 
 
     }
@@ -55,27 +55,27 @@ class Register extends React.Component {
             }
         });
     }
-    onResize(thresh){
+    // onResize(thresh){
 
-        console.log("resizing")
-            if (thresh > 10 ){
-                Alert.warning(`Your browser size is NOT OK! `, {
-                    position: 'bottom',
-                    effect: 'scale',
-                    beep: true,
-                    timeout: "none"
-                });
-            } else {
-                Alert.success(`Your browser size is OK! You can continue!`, {
-                    position: 'bottom',
-                    effect: 'scale',
-                    beep: true,
-                    timeout: "none"
-                });
+    //     console.log("resizing")
+    //         if (thresh > 10 ){
+    //             Alert.warning(`Your browser size is NOT OK! `, {
+    //                 position: 'bottom',
+    //                 effect: 'scale',
+    //                 beep: true,
+    //                 timeout: "none"
+    //             });
+    //         } else {
+    //             Alert.success(`Your browser size is OK! You can continue!`, {
+    //                 position: 'bottom',
+    //                 effect: 'scale',
+    //                 beep: true,
+    //                 timeout: "none"
+    //             });
                 
-            }
+    //         }
         
-    }
+    // }
 }
 
 var resolutionCheck = function() {

@@ -12,12 +12,12 @@ class Form extends React.PureComponent {
         this.handleComplete = this.handleComplete.bind(this);
         this.handleCutCopyPaste = this.handleCutCopyPaste.bind(this);
         this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
-        this.handleResize = this.handleResize.bind(this);
+        //this.handleResize = this.handleResize.bind(this);
     }
 
     componentDidMount() {
         document.addEventListener('visibilitychange', this.handleVisibilityChange);
-        window.addEventListener('resize', this.handleResize);
+        //window.addEventListener('resize', this.handleResize);
     }
 
     componentWillUnmount() {
@@ -43,15 +43,15 @@ class Form extends React.PureComponent {
     }
 
     ////
-    handleResize(){
+    // handleResize(){
         
-            console.log("resizing")
-            let availHeight = window.screen.availHeight;
-            let outerHeight = window.outerHeight;
+    //         console.log("resizing")
+    //         let availHeight = window.screen.availHeight;
+    //         let outerHeight = window.outerHeight;
             
-            this.props.onResize(availHeight - outerHeight);
+    //         this.props.onResize(availHeight - outerHeight);
 
-    }
+    // }
 
     handleComplete(res) {
         this.props.onComplete(res.data);
@@ -87,14 +87,14 @@ Form.propTypes = {
     onComplete: PropTypes.func.isRequired,
     onSwitchPage: PropTypes.func,
     disableCopy: PropTypes.bool,
-    onResize: PropTypes.func,
+    //onResize: PropTypes.func,
 };
 
 Form.defaultProps = {
     formValidation: () => {},
     onSwitchPage: () => {},
     disableCopy: false,
-    onResize: () => {}
+    //onResize: () => {}
 };
 
 export default Form;
