@@ -18,7 +18,7 @@ class Register extends React.Component {
     }
 
     render() {
-
+        console.log('render');
         return <Form
             formData={formData()}
             onComplete={this.onComplete}
