@@ -19,25 +19,11 @@ class Register extends React.Component {
 
     render() {
 
-       
-        // if (availHeight - outerHeight > 10) {
-        //     document.querySelector('#isok').style.background = 'red';
-        //     document.querySelector('#isok').innerHTML = 'NO!!!';
-        // }
-        // else {
-        //     document.querySelector('#isok').style.background = 'green';
-        //     document.querySelector('#isok').innerHTML = 'OK';
-        // }
-
         return <Form
             formData={formData()}
             onComplete={this.onComplete}
             onResize={this.onResize}
         /> 
-        
-        
-        
-
 
     }
 
@@ -97,11 +83,11 @@ var resolutionCheck = function() {
     let outerHeight = window.outerHeight;
 
     if (availHeight - outerHeight > 10 ){
-        document.querySelector('#resolution-okay').hidden = false;
-        document.querySelector('#resolution-bad').hidden = true;
-    } else {
         document.querySelector('#resolution-okay').hidden = true;
         document.querySelector('#resolution-bad').hidden = false;
+    } else {
+        document.querySelector('#resolution-okay').hidden = false;
+        document.querySelector('#resolution-bad').hidden = true;
     }
 }
 
