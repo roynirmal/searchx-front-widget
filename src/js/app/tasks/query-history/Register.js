@@ -154,7 +154,7 @@ const formData = function() {
             <li> 
             <p>
             Please make sure the height of your browser is maximised and <b>do not</b> resize your browser during the course of the study. If the last line says 'Your browser height is NOT OK', you need to maximise your browser size
-            and refresh the page. If the browser height is okay, the last line will say 'Your browser height is OK!'. We might need to cancel your study, if you resize your browser during the study.
+            and refresh the page. <span id="resolution-message">msg</span> If the browser height is okay, the last line will say 'Your browser height is OK!'. <strong>We may need to cancel your study if you resize your browser during the study.</strong>
             </p>
         </li>
         </ol>
