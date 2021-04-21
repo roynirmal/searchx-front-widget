@@ -22,7 +22,7 @@ class Register extends React.Component {
         return <Form
             formData={formData()}
             onComplete={this.onComplete}
-            //onResize={this.onResize}
+            resolutionCheck={resolutionCheck}
         /> 
 
     }
