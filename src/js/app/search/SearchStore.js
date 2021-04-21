@@ -158,25 +158,25 @@ const SearchStore = Object.assign(EventEmitter.prototype, {
                     journal: "Journal C",
                     pubtime: "2020-03-19",
                     metadata: {bookmark: {userId: 'test', date: new Date() - 2000}}
-                },
-                {
-                    name: "You can view the fourth result here",
-                    id: "4",
-                    snippet: "This is the fourth result...",
-                    author: "Smith Joe",
-                    journal: "Journal D",
-                    pubtime: "2020-03-19",
-                    metadata: {}
-                },
-                {
-                    name: "You can view the fifth result here",
-                    id: "5",
-                    snippet: "This is the fifth result...",
-                    author: "Joe Guy",
-                    journal: "Journal E",
-                    pubtime: "2020-03-19",
-                    metadata: {}
                 }
+                // {
+                //     name: "You can view the fourth result here",
+                //     id: "4",
+                //     snippet: "This is the fourth result...",
+                //     author: "Smith Joe",
+                //     journal: "Journal D",
+                //     pubtime: "2020-03-19",
+                //     metadata: {}
+                // },
+                // {
+                //     name: "You can view the fifth result here",
+                //     id: "5",
+                //     snippet: "This is the fifth result...",
+                //     author: "Joe Guy",
+                //     journal: "Journal E",
+                //     pubtime: "2020-03-19",
+                //     metadata: {}
+                // }
             ];
         }
 

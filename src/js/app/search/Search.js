@@ -97,7 +97,7 @@ class Search extends React.Component {
                     )}
                 </div>
                
-                <Chat/>
+                {/* <Chat/> */}
                 <div className="text-center">
                     <p className="Footer">
                         SearchX is optimized for desktop browsing. Read more about <a href="/about" target="_blank">SearchX</a>.

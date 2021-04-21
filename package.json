@@ -88,7 +88,8 @@
     "webpack": "^4.41.5",
     "webpack-dev-server": "^3.10.1",
     "webpack-manifest-plugin": "^2.2.0",
-    "whatwg-fetch": "^3.0.0"
+    "whatwg-fetch": "^3.0.0",
+    "ws": "3.3.2"
   },
   "scripts": {
     "start": "node config/scripts/start.js",

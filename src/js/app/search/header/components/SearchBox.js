@@ -5,7 +5,7 @@ import React from 'react';
 const SearchBox = function({query, changeHandler, showSuggestionsHandler}) {
     return (
         <div className="box">
-            <div className="input-group">
+            <div className="input-group" style={{"width" : "450px"}}>
                 <input type="text" className="form-control" name="query" placeholder=""
                        value={query}
                        onChange={e => changeHandler(e.target.value)}

@@ -5,6 +5,7 @@ import Bowser from "bowser"
 import history from './History';
 import About from './pages/About';
 import Search from './search/Search';
+import Alert from "react-s-alert";
 
 import SimpleRegister from './tasks/example-simple/Register';
 import SimpleSubmit from './tasks/example-simple/Submit';
@@ -52,17 +53,33 @@ import Chat from './search/features/chat/Chat';
 
 export class App extends React.Component {
     
+    ifnotmax() {
+        Alert.error('Please maximize your window to complete our study', {
+            position: 'top-right',
+            effect: 'scale',
+            beep: true,
+            timeout: "none"
+        });
+    }
     
     render() {
-        const width  = window.outerWidth;
-        const height = window.outerHeight;
-        const sHeight = screen.height;
-        const sWidth = screen.width;
+ 
+        const sHeight = window.screen.height;
+        const sWidth = window.screen.width;
 
-        const sAvailHeight = screen.availHeight;
-        const sAvailWidth = screen.availWidth;
 
-        console.log(width, height, sHeight, sWidth, sAvailHeight, sAvailWidth);
+
+        console.log( sHeight, sWidth);
+
+        if (sHeight < 1080 && sWidth < 1920) {
+            return (<div>
+                <h3>Your screen-size does not meet our requriements:
+                    It has to be 1920x1080 (width x height). Sorry!
+                </h3>
+            </div>)
+        }
+
+
 
         const md = new MobileDetect(window.navigator.userAgent);
         // console.log("mobile", md.mobile());

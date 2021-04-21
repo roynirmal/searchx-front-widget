@@ -37,20 +37,20 @@ const SearchResults = function ({
     };
 
     if (searchState.query === '' && results.length === 0) {
-        return <CenteredMessage height="800px" style={style}>
+        return <CenteredMessage height="650px" style={style}>
             <h3> Your search results will appear here :) </h3>
         </CenteredMessage>
     }
 
     if (progress.resultsNotFound) {
-        return <CenteredMessage height="800px" style={style}>
+        return <CenteredMessage height="650px" style={style}>
             <h3> Sorry! :`( </h3>
             <h4> We have not found results for you! Try to shorten your query! </h4>
         </CenteredMessage>
     }
 
     if (!tutorial && !progress.finished) {
-        return <CenteredMessage height="800px">
+        return <CenteredMessage height="650px">
             <Loader/>
         </CenteredMessage>
     }
@@ -78,7 +78,7 @@ const SearchResults = function ({
     let lastCollapsedResults = [];
     let lastCollapsedResultsComponents = [];
     for (const [index, result] of results.entries()) {
-        if (index < 8){
+        if (index < 6){
         const collapsedResult = distributionOfLabour && collapsed[Helpers.getId(result)];
 
         const resultProps = {

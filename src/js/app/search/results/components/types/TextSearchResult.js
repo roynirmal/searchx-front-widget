@@ -50,12 +50,25 @@ const TextSearchResult = function ({
     };
 
     function createSnippet() {
-        return {__html: result.snippet};
-        // var doctext = result.text.split('\n').map((item, key) => {
-        //     return <span key={key}>{item}<br/></span>
-        // })
-
-        // return {__html: result.text.substr(1,500) };
+        let snippet = result.snippet
+        console.log(snippet)
+        let str =  snippet.split("<strong>...</strong>")
+        let e = snippet.startsWith("<strong>...") ? 550/(str.length-2): 550/(str.length-1)
+        
+        let final = []
+        str.forEach(s => {
+          if (s.length < e) {
+            final.push(s)
+          } else {
+          let fidx =Math.ceil(s.length - e )/2
+          final.push(s.substr(fidx, e))
+          }
+        })
+          
+        
+        console.log( ) 
+        return {__html: final.join("...")};
+        // return {__html: result.snippet}
     }
 
     const hideCollapsedResults = function () {
@@ -83,7 +96,7 @@ const TextSearchResult = function ({
         result.name = toTitleCase(result.name);
     }
     let cn
-    if (index === 4 && localStorage.getItem("variant") === 'mid') {
+    if (index === 2 && localStorage.getItem("variant") === 'mid') {
         cn = "result-text-space";
     } else {
         cn = "result-text";
