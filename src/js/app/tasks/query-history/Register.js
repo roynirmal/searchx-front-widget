@@ -180,7 +180,6 @@ const formData = function() {
     });
     
     window.addEventListener('resize', resolutionCheck);
-    resolutionCheck();
 
 
     pages.push({elements:  elements});
@@ -275,7 +274,7 @@ const formData = function() {
 
     pages.push({elements:  elements});
 
-
+    resolutionCheck();
     return {
         pages: pages,
         requiredText: "",
