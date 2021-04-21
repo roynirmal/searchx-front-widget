@@ -86,9 +86,7 @@ class Session extends React.PureComponent {
         const sessionNum = localStorage.getItem("session-num") || 0;
 
         const timer = (
-            <div style={{marginTop: '10px', textAlign: 'center'}}>
-                {/* <Timer start={this.state.start} duration={constants.taskDuration} onFinish={this.onFinish} style={{fontSize: '2em'}} showRemaining={false}/> */}
-                
+            <div style={{marginTop: '10px', textAlign: 'center'}}>                
                 <Link className={"btn btn-primary" } to={"/QHWPostTest/posttest"} role="button">
                         Finish
                 </Link>
@@ -141,19 +139,12 @@ class Session extends React.PureComponent {
         // if (localStorage.session ==1):
         let sessionNum = localStorage.getItem("session-num") || 0;
         
-        
         sessionNum++ 
 
         localStorage.setItem("session-num", sessionNum);
-        if (sessionNum === 4 ){
-            this.setState({
-                finished: true
-            });;
-        } else {
-            this.props.history.push('/covidsearch/intermediatetest');
-        }
-        
+        this.setState({finished: true})
     }
+    
     onLeave() {
         log(LoggerEventTypes.SEARCH_EXIT, {
             step : "session",
