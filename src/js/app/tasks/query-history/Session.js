@@ -259,7 +259,7 @@ class Session extends React.PureComponent {
                 <Timer start={this.state.start} duration={constants.taskDuration} onFinish={this.onFinish} style={{fontSize: '2em'}} showRemaining={false}/>
                 
                 <Link className={"btn btn-primary" + (this.state.finished ? '' : ' disabled')} to={"/qhw/posttest"} role="button">
-                        Finish
+                        To Final Test
                 </Link>
             </div>
         );
