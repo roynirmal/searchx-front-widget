@@ -22,13 +22,11 @@ class Form extends React.PureComponent {
 
     componentWillUnmount() {
         document.removeEventListener('visibilitychange', this.handleVisibilityChange);
-        
     }
 
     render() {
         Survey.Survey.cssType = "bootstrap";
         Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
-
 
         let survey = new Survey.Model(this.props.formData);
         survey.completedHtml = `<div class='message'>${survey.completedHtml}</div>`;
@@ -74,8 +72,6 @@ class Form extends React.PureComponent {
 
     handleVisibilityChange() {
         if (document.hidden) {
-        
-            
             this.props.onSwitchPage();
         }
     }
