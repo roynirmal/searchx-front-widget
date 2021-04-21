@@ -38,13 +38,13 @@ const SearchResults = function ({
 
     if (searchState.query === '' && results.length === 0) {
         return <CenteredMessage height="650px" style={style}>
-            <h3> Your search results will appear here :) </h3>
+            <h3 left="150px"> Your search results will appear here :) </h3>
         </CenteredMessage>
     }
 
     if (progress.resultsNotFound) {
         return <CenteredMessage height="650px" style={style}>
-            <h3> Sorry! :`( </h3>
+            <h3 left="150px"> Sorry! :`( </h3>
             <h4> We have not found results for you! Try to shorten your query! </h4>
         </CenteredMessage>
     }
