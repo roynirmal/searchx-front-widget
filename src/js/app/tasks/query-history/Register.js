@@ -88,6 +88,9 @@ class Register extends React.Component {
     }
 }
 
+var resolutionCheck = function() {
+    console.log('check resolution!');
+}
 
 const formData = function() {
     let pages = [];
@@ -151,18 +154,14 @@ const formData = function() {
                 We will consider off-topic searches, like tomorrow's weather, news on politics, or movie reviews of the Black Widow movie, as off-topic and may cancel your participation.
                 </p>
             </li>
-            <li> 
-            <!--<p>
-            Please make sure the height of your browser is maximised and <b>do not</b> resize your browser during the course of the study. If the last line says 'Your browser height is NOT OK', you need to maximise your browser size
-            and refresh the page. If the browser height is okay, the last line will say 'Your browser height is OK!'. <strong>We may need to cancel your study if you resize your browser during the study.</strong>
-            </p>-->
+            <li>
             
-            <p>
+            <p id="resolution-okay">
                 <span style="background-color: #2FC987;"><strong>Your browser's resolution is good.</strong></span>
                 Please keep your browser window at this resolution through the duration of the study. <strong>If you resize your browser during the study, we may have to cancel your participation.</strong>
             </p>
 
-            <p>
+            <p id="resolution-bad">
                 <span style="background-color: #F16034"><strong>Please maximise your browser's window.</strong></span>
                 Your browser's window is not big enough to run this study.
             </p>
@@ -170,25 +169,9 @@ const formData = function() {
         </ol>
         <hr/>   `
     });
-    // let elem;
-   
-    // console.log(elem)
-    // if (elem === 'good' ){
-    //      elements.push({
-    //             type: "html",
-    //             name: "screen",
-    //             html: `<span  style="background-color: #2FC987"> Your browser height is OK! You are good to proceed! </span>`
-    //         });
-    // } else {
-    //     elements.push({
-    //         type: "html",
-    //         name: "screen",
-    //         html: `<span  style="background-color: #2FC987"> Your browser height is OK! You are good to proceed! </span>`
-    //     });
-    // }
     
-    
-    // elements.push(elem)
+    window.addEventListener('resize', resolutionCheck);
+
 
     pages.push({elements:  elements});
 
