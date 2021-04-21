@@ -31,6 +31,10 @@ class Register extends React.Component {
         window.addEventListener('resize', resolutionCheck);
     }
 
+    componentWillUnmount() {
+        console.log('done');
+    }
+
     ////
 
     onComplete(data) {
