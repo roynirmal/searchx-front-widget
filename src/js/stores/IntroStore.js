@@ -49,7 +49,11 @@ const IntroStore = Object.assign(EventEmitter.prototype, {
             QueryHistoryStore.removeQueryHistoryTutorialData();
             BookmarkStore.removeBookmarksTutorialData();
 
-            console.log('introduction is DONE');
+            if (window.LogUI && window.LogUI.isActive()) {
+                window.LogUI.logCustomMessage({
+                    name: 'TUTORIAL_COMPLETED'
+                });
+            }
 
             callback();
         };
