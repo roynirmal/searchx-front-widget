@@ -148,7 +148,7 @@ class Session extends React.PureComponent {
 
                 // QHW box hover in/out
                 'qhw-hover': {
-                    selector: '.QueryHistory div',
+                    selector: '.QueryHistory > div',
                     event: 'mouseHover',
                     properties: {
                         mouseenter: {
