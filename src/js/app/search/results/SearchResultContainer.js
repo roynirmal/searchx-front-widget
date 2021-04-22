@@ -85,8 +85,8 @@ export default class SearchResultContainer extends React.Component {
 
         if (window.hasOwnProperty('LogUI') && window.LogUI.isActive()) {
             window.LogUI.logCustomMessage({
-                eventType: 'bookmark',
-                rank: index,
+                name: 'BOOKMARK',
+                rank: index + 1,
                 action: action,
             });
         }
