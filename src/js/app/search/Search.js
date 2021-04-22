@@ -71,6 +71,7 @@ class Search extends React.Component {
     }
 
     render() {
+        // tl, ur, lr, bl, mid
        localStorage.setItem("variant", "ur")
         return (
             <div className="Search">

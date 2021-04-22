@@ -13,6 +13,8 @@ const QueryHistory = function({history, popup, clickHandler, popupHandler, test}
         />
     });
 
+    // tl, ur, lr, bl, mid
+
     return (
     <div className={"QueryHistory"}>
         <div className={"ur"}>

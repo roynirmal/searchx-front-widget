@@ -49,6 +49,8 @@ const IntroStore = Object.assign(EventEmitter.prototype, {
             QueryHistoryStore.removeQueryHistoryTutorialData();
             BookmarkStore.removeBookmarksTutorialData();
 
+            console.log('introduction is DONE');
+
             callback();
         };
         intro.onexit(oncomplete);
