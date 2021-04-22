@@ -46,6 +46,7 @@ class Timer extends React.PureComponent {
             minutes = 0;
             seconds = 0;
         }
+        const bc = localStorage.getItem("bookmark-count") || 0;
 
         return (
             <div className="Timer" style={this.props.style}>
@@ -54,6 +55,9 @@ class Timer extends React.PureComponent {
                     :
                     '0:0'
                 }
+                <span style={{position: 'relative', right:"300px", bottom:"32px", fontSize: '15px'}} > Total documents left
+                <p style={{position:'absolute', top: "15px", left:"75px", fontSize: '30px'}}> {6 - bc}</p>
+                </span>
             </div>
         )
     }

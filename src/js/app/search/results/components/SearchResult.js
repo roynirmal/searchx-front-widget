@@ -8,7 +8,7 @@ import Identicon from "identicon.js";
 import md5 from 'md5';
 
 const SearchResult = function ({
-                                   searchState, serpId, result, bookmarkClickHandler, urlClickHandler, provider,
+                                   searchState, serpId, result, bookmarkClickHandler, bookmarkCheckHandler, urlClickHandler, provider,
                                    collapsed, excludeClickHandler, hideCollapsedResultsHandler, isCollapsible, visited,
                                    index
                                }) {
@@ -18,12 +18,28 @@ const SearchResult = function ({
         initialBookmark = result.metadata.bookmark ? 1 : 0;
         initialExclude = result.metadata.exclude ? 1 : 0;
     }
+    let book_bool;
 
+    let bc = localStorage.getItem("bookmark-count")
+    console.log("bc", bc)
+    if (result.metadata.bookmark) {      
+        book_bool = false
+    }
+    else {
+        if (bc <=5){
+            book_bool = false
+        } else {
+
+            book_bool = true
+        } 
+    }
+    console.log("book bool",book_bool)
     const bookmarkButton = <Rating
         className="rating" emptySymbol="fa fa-bookmark-o" fullSymbol="fa fa-bookmark"
         onClick={bookmarkClickHandler}
         stop={1} initialRating={initialBookmark}
         title="Save result"
+        readonly={book_bool}
     />;
 
     // TODO: use variant from SearchStore instead of defaultVariant

@@ -47,7 +47,7 @@ class Session extends React.PureComponent {
                 intro: td
             },
             {
-                element: '.SearchResults',
+                element: '.Bookmarks',
                 intro: 'Save a document that you think is relevant by clicking on the \
                 yellow flag. If you want to de-select a document, click the yellow flag once more!',
                 position: 'top'
@@ -68,16 +68,10 @@ class Session extends React.PureComponent {
     }
 
     startLogUI() {
-        let currentVariant = localStorage.getItem("variant");
-        
-        if (!currentVariant) {
-            currentVariant = 'unknown';
-        }
-
         let configurationObject = {
             logUIConfiguration: {
                 endpoint: 'ws://logui.ewi.tudelft.nl/ws/endpoint/',
-                authorisationToken: 'eyJ0eXBlIjoibG9nVUktYXV0aG9yaXNhdGlvbi1vYmplY3QiLCJhcHBsaWNhdGlvbklEIjoiNjg2OGRkZDEtODNhYy00NTJlLTk2ZDEtNjJkZDg5OWJlNTUzIiwiZmxpZ2h0SUQiOiIwOWEzMTZhZS03NjU3LTQwMTktOWQyNi1iN2EyZjhjZDk5M2IifQ:1lZWAt:nAODCjdRRVIyN8ddgzWj936258wBPizXv_TAt1zmvMY',
+                authorisationToken: 'eyJ0eXBlIjoibG9nVUktYXV0aG9yaXNhdGlvbi1vYmplY3QiLCJhcHBsaWNhdGlvbklEIjoiNjg2OGRkZDEtODNhYy00NTJlLTk2ZDEtNjJkZDg5OWJlNTUzIiwiZmxpZ2h0SUQiOiI0NWJlNGFkNS0yNDQ0LTRlOTItYTA0My05ZmQ0YmZhYWI4ZmUifQ:1lYafK:1cG6yM47tk2vv1hSuhuAsxVYZbDGDBvenrjpvbPKjwI',
                 verbose: true,
 
                 browserEvents: {
@@ -86,8 +80,8 @@ class Session extends React.PureComponent {
                     URLChanges: true,
                     contextMenu: true,
                     pageFocus: true,
-                    trackCursor: true,
-                    cursorUpdateFrequency: 500,
+                    trackCursor: false,
+                    cursorUpdateFrequency: 2000,
                     cursorLeavingPage: true,
                     pageResize: true,
                 }
@@ -95,21 +89,13 @@ class Session extends React.PureComponent {
             applicationSpecificData: {
                 userId: AccountStore.getUserId(),
                 groupId: AccountStore.getGroupId(),
-                variant: currentVariant,
             },
             trackingConfiguration: {
                 // Form and query box
-                'query-box-hover': {
+                'query-box-hoverin': {
                     selector: 'form input',
-                    event: 'mouseHover',
-                    properties: {
-                        mouseenter: {
-                            name: 'QUERY_BOX_MOUSE_ENTER',
-                        },
-                        mouseleave: {
-                            name: 'QUERY_BOX_MOUSE_LEAVE',
-                        }
-                    },
+                    event: 'mouseenter',
+                    name: 'QUERY_BOX_MOUSE_ENTER',
                 },
 
                 'query-box-focus': {
@@ -155,7 +141,7 @@ class Session extends React.PureComponent {
 
                 // QHW box hover in/out
                 'qhw-hover': {
-                    selector: '.QueryHistory > div',
+                    selector: '.QueryHistory .tl',
                     event: 'mouseHover',
                     properties: {
                         mouseenter: {
@@ -169,7 +155,7 @@ class Session extends React.PureComponent {
 
                 // QHW previous query hover in/out
                 'qhw-hover-item': {
-                    selector: '.QueryHistory div .list .item .text a',
+                    selector: '.QueryHistory * .list .item .text a',
                     event: 'mouseHover',
                     properties: {
                         mouseenter: {
@@ -190,16 +176,9 @@ class Session extends React.PureComponent {
 
                 // QHW previous query click
                 'qhw-click-item': {
-                    selector: '.QueryHistory div .list .item .text a',
+                    selector: '.QueryHistory * .list .item .text a',
                     event: 'click',
                     name: 'QHW_QUERY_CLICK',
-                    metadata: [
-                        {
-                            nameForLog: 'QUERY',
-                            sourcer: 'elementAttribute',
-                            lookFor: 'data-query',
-                        }
-                    ]
                 },
 
                 // QHW scrolling
@@ -249,7 +228,7 @@ class Session extends React.PureComponent {
 
                 // Search result click
                 'result-click': {
-                    selector: '.SearchResults .list > div div.SearchResult div div h2',
+                    selector: '.SearchResults .list > div div.SearchResult div div h2 a',
                     event: 'click',
                     name: 'RESULT_CLICK',
                 },
@@ -277,13 +256,15 @@ class Session extends React.PureComponent {
 
 
     render() {
+        
         const task = AccountStore.getTask();
         console.log(task.data.topics);
         const sessionNum = localStorage.getItem("session-num") || 0;
 
         const timer = (
             <div style={{marginTop: '20px', textAlign: 'center'}}>
-                <Timer start={this.state.start} duration={constants.taskDuration} onFinish={this.onFinish} style={{fontSize: '2em', float: 'right', paddingRight:'180px', paddingTop: '25px'}} showRemaining={false}/>
+                <Timer start={this.state.start} duration={constants.taskDuration} onFinish={this.onFinish} style={{fontSize: '2em', float: 'right', paddingTop: '25px', position:"relative"}} showRemaining={false}/>
+ 
                 
                 <Link className={"btn btn-primary" + (this.state.finished ? '' : ' disabled')} to={"/qhw/posttest"} role="button" style={{float: 'left', marginLeft: '5px', marginTop: '30px'}}>
                         To Final Test
@@ -302,22 +283,22 @@ class Session extends React.PureComponent {
             log(LoggerEventTypes.TASK_CLOSE, metaInfo);
         };
 
-        const taskDescription = (
-            <Collapsible trigger="Your Task" open transitionTime={3} onOpen={handleTaskOpen} onClose={handleTaskClose} >
-                <p>
-                        We require to find relevant documents regarding the following information need:
-                </p>
+        // const taskDescription = (
+        //     <Collapsible trigger="Your Task" open transitionTime={3} onOpen={handleTaskOpen} onClose={handleTaskClose} >
+        //         <p>
+        //                 We require to find relevant documents regarding the following information need:
+        //         </p>
 
-                <p ><b><i>"{ task.data.topics[1].description }"</i></b></p> 
-                <hr/>
+        //         <p ><b><i>"{ task.data.topics[1].description }"</i></b></p> 
+        //         <hr/>
 
-                <p>
-                    After you are satisfied with your found documents, click the Finish button above to submit the documents which you found to be most resourceful for this particular information need.
-                </p>
+        //         <p>
+        //             After you are satisfied with your found documents, click the Finish button above to submit the documents which you found to be most resourceful for this particular information need.
+        //         </p>
 
 
-            </Collapsible>
-        );
+        //     </Collapsible>
+        // );
 
         return (
             <div>
@@ -359,15 +340,6 @@ class Session extends React.PureComponent {
             switch: switchTabs
         });
         if (switchTabs >= constants.switchPageLimit) {
-
-            if (window.LogUI && window.LogUI.isActive()) {
-                window.LogUI.logCustomMessage({
-                    name: 'USER_DISQUALIFIED',
-                });
-            }
-
-            console.log("DISQ");
-
             this.onLeave();
             localStorage.setItem("invalid-user",1);
             this.props.history.push('/disq');
@@ -393,13 +365,6 @@ class Session extends React.PureComponent {
                 beep: true,
                 timeout: "none"
             });
-
-            if (window.LogUI && window.LogUI.isActive()) {
-                window.LogUI.logCustomMessage({
-                    name: 'USER_TAB_WARNING',
-                    count: switchTabs,
-                });
-            }
         }
     }
 }

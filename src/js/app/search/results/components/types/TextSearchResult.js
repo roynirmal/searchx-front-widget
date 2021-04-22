@@ -51,7 +51,7 @@ const TextSearchResult = function ({
 
     function createSnippet() {
         let snippet = result.snippet
-        console.log(snippet)
+        // console.log(snippet)
         let str =  snippet.split("<strong>...</strong>")
         let e = snippet.startsWith("<strong>...") ? 550/(str.length-2): 550/(str.length-1)
         
