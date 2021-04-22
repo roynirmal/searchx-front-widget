@@ -242,7 +242,7 @@ class Session extends React.PureComponent {
 
                 // Search result click
                 'result-click': {
-                    selector: '.SearchResults .list > div div.SearchResult div div h2 a',
+                    selector: '.SearchResults .list > div div.SearchResult div div h2',
                     event: 'click',
                     name: 'RESULT_CLICK',
                 },
