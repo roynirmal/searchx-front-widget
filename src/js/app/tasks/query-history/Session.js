@@ -345,6 +345,8 @@ class Session extends React.PureComponent {
                 });
             }
 
+            console.log("DISQ");
+
             this.onLeave();
             localStorage.setItem("invalid-user",1);
             this.props.history.push('/disq');
@@ -373,7 +375,7 @@ class Session extends React.PureComponent {
 
             if (window.LogUI && window.LogUI.isActive()) {
                 window.LogUI.logCustomMessage({
-                    name: 'USER_FOCUS_WARNING',
+                    name: 'USER_TAB_WARNING',
                     count: switchTabs,
                 });
             }
