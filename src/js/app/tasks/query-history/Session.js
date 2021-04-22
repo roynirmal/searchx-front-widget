@@ -92,10 +92,17 @@ class Session extends React.PureComponent {
             },
             trackingConfiguration: {
                 // Form and query box
-                'query-box-hoverin': {
+                'query-box-hover': {
                     selector: 'form input',
-                    event: 'mouseenter',
-                    name: 'QUERY_BOX_MOUSE_ENTER',
+                    event: 'mouseHover',
+                    properties: {
+                        mouseenter: {
+                            name: 'QUERY_BOX_MOUSE_ENTER',
+                        },
+                        mouseleave: {
+                            name: 'QUERY_BOX_MOUSE_LEAVE',
+                        }
+                    },
                 },
 
                 'query-box-focus': {
@@ -141,7 +148,7 @@ class Session extends React.PureComponent {
 
                 // QHW box hover in/out
                 'qhw-hover': {
-                    selector: '.QueryHistory .tl',
+                    selector: '.QueryHistory div',
                     event: 'mouseHover',
                     properties: {
                         mouseenter: {
@@ -155,7 +162,7 @@ class Session extends React.PureComponent {
 
                 // QHW previous query hover in/out
                 'qhw-hover-item': {
-                    selector: '.QueryHistory * .list .item .text a',
+                    selector: '.QueryHistory div .list .item .text a',
                     event: 'mouseHover',
                     properties: {
                         mouseenter: {
@@ -176,7 +183,7 @@ class Session extends React.PureComponent {
 
                 // QHW previous query click
                 'qhw-click-item': {
-                    selector: '.QueryHistory * .list .item .text a',
+                    selector: '.QueryHistory div .list .item .text a',
                     event: 'click',
                     name: 'QHW_QUERY_CLICK',
                 },
