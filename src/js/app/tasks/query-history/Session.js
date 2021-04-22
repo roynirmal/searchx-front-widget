@@ -86,8 +86,7 @@ class Session extends React.PureComponent {
                     URLChanges: true,
                     contextMenu: true,
                     pageFocus: true,
-                    trackCursor: true,
-                    cursorUpdateFrequency: 400,
+
                     cursorLeavingPage: true,
                     pageResize: true,
                 }
