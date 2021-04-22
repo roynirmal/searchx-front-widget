@@ -261,6 +261,20 @@ class Session extends React.PureComponent {
                     },
                 },
 
+                // Rating hover in/out
+                'result-rating-click': {
+                    selector: '.SearchResults .list > div div.SearchResult div span.rating',
+                    event: 'click',
+                    properties: {
+                        mouseenter: {
+                            name: 'RESULT_RATING_CLICK',
+                        },
+                        mouseleave: {
+                            name: 'RESULT_RATING_CLICK',
+                        }
+                    },
+                },
+
 
             },
         };
