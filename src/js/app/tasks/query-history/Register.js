@@ -135,19 +135,23 @@ const formData = function() {
 
         <hr/>
 
-        <p> Our search engine looks similar to a web search engine. You can 
-        issue search queries in the search bar and view your recently submitted 
-        queries in our <i>Recent queries</i> box. You cannot view the entire 
-        document though: please just read the document snippet available for each 
-        search result and consider based on the snippet whether the document contains 
-        information about the topic of <b>wildlife extinction</b>.
+        <p> Our search engine looks similar to a web search engine. You can issue search queries in the search bar and 
+        view your recently submitted queries in our Recent queries box. You cannot view the entire document though: please 
+        just read the document snippet available for each search result and consider based on the snippet whether the 
+        document contains information about the topic of <strong>wildlife extinction</strong>.
+
         
         
-        <p>We will be giving bonuses to the participants that identify the 
-most <b>relevant</b> documents, <i>but only those</i>. Marking non-relevant documents will therefore 
-hamper your chances of receiving a bonus. Mark a document that you think is relevant by clicking on 
-the yellow flags that will be present to the left of the documents. If you want to de-select a document, 
-click the yellow flag once more!</p>
+        <p>For this study, we ask you to identify, or <em>mark</em> some documents that you think are relevant to the 
+        topic described above. You are permitted to mark at most Y documents.
+         The more relevant documents that you identify, the more likely you are to receive a bonus.</p>
+
+         <p> <strong>Mark documents that you think are relevant by clicking on the yellow flag next to a
+          document's title.</strong> This flag acts as a toggle: one click marks the document, a further click unmarks it. </p>
+
+          <p>Remembering that you can only select a total of Y documents, you may find that you want to unmark a previously marked document. This can be done by re-issuing previous queries using either the search box, or the <em>Recent queries</em> box. 
+          Once you find the document you wish to unmark, simply click the flag next to its title.
+
         
         <p>We ask you to search for a minimum of 10 minutes. A timer on the right-hand corner of the
         screen will help you to keep track of time. After 10 minutes, when you are satisfied, you can click on the 

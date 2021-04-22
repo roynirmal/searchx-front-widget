@@ -33,7 +33,7 @@ const QueryHistoryItem = function({data, clickHandler, test}) {
             <span className="text">
                 
             {/* <img src={iconUrl} alt={"User " + md5(data.userId)}/>  */}
-            <a href="#/" data-query={data.query} style={test?{ cursor: 'text'}:{ cursor: 'pointer'}} onContextMenu={contextUrlLog} onClick={test?() => {}:() => {clickHandler(data.query);clickUrlLog();}}>
+            <a href="#/" data-query={data.query} onContextMenu={contextUrlLog} onClick={test?() => {}:() => {clickHandler(data.query);clickUrlLog();}}>
                     {data.query}
                 </a>
             </span>
