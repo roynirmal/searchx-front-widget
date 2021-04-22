@@ -45,6 +45,12 @@ class Session extends React.PureComponent {
             {
                 element: '.TaskDescription',
                 intro: td
+            },
+            {
+                element: '.SearchResults',
+                intro: 'Save a document that you think is relevant by clicking on the \
+                yellow flag. If you want to de-select a document, click the yellow flag once more!',
+                position: 'top'
             }
         ];     
         IntroStore.startIntro(introSteps, () => {
