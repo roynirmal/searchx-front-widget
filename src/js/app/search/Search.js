@@ -63,11 +63,11 @@ class Search extends React.Component {
         };
         document.removeEventListener('visibilitychange', this.handleVisibilityChange, this.checkDevice);
 
-        if (window.hasOwnProperty('LogUI')) {
-            if (window.LogUI.isActive()) {
-                window.LogUI.stop();
-            }
-        }
+        // if (window.hasOwnProperty('LogUI')) {
+        //     if (window.LogUI.isActive()) {
+        //         window.LogUI.stop();
+        //     }
+        // }
     }
 
     render() {
