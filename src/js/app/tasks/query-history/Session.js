@@ -186,6 +186,13 @@ class Session extends React.PureComponent {
                     selector: '.QueryHistory div .list .item .text a',
                     event: 'click',
                     name: 'QHW_QUERY_CLICK',
+                    metadata: [
+                        {
+                            nameForLog: 'QUERY',
+                            sourcer: 'elementAttribute',
+                            lookFor: 'data-query',
+                        }
+                    ]
                 },
 
                 // QHW scrolling
