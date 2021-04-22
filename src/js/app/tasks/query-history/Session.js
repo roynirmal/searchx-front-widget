@@ -349,6 +349,12 @@ class Session extends React.PureComponent {
                 beep: true,
                 timeout: "none"
             });
+
+            if (window.LogUI && window.LogUI.isActive()) {
+                window.LogUI.logCustomMessage({
+                    name: 'USER_DISQUALIFIED',
+                });
+            }
         } else {
             Alert.error('We have noticed that you have tried to change to a different window/tab. Please, use SearchX only for your learning about the given topic!', {
                 position: 'top-right',
@@ -363,6 +369,13 @@ class Session extends React.PureComponent {
                 beep: true,
                 timeout: "none"
             });
+
+            if (window.LogUI && window.LogUI.isActive()) {
+                window.LogUI.logCustomMessage({
+                    name: 'USER_FOCUS_WARNING',
+                    count: switchTabs,
+                });
+            }
         }
     }
 }
