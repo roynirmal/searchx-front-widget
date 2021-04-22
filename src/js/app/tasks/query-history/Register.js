@@ -181,7 +181,7 @@ click the yellow flag once more!</p>
 
             <p id="resolution-bad">
                 <span style="background-color: #F16034"><strong>Please maximise your browser's window.</strong></span>
-                Your browser's window is not big enough to run this study.
+                Your browser's window is not big enough to run this study. <strong>If you have resized and you still see this message, try refreshing your browser.</strong>
             </p>
         </li>
         </ol>
