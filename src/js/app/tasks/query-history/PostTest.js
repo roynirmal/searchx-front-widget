@@ -164,9 +164,42 @@ const formData = function(topic) {
         name: "query-widget-position",
         type: "rating",
         isRequired: true,
-        minRateDescription: "Bad",
-        maxRateDescription: "Great"
+        minRateDescription: "Unexpected",
+        maxRateDescription: "Expected"
     });
+    elements.push({ 
+        title: "Did the query history widget support you in your task?",
+        name: "pragmatic1",
+        type: "rating",
+        isRequired: true,
+        minRateDescription: "Obstructive",
+        maxRateDescription: "Supportive"
+    });
+    elements.push({ 
+        title: "Was the query history widget easy to use?",
+        name: "pragmatic2",
+        type: "rating",
+        isRequired: true,
+        minRateDescription: "Complicated",
+        maxRateDescription: "Easy"
+    });
+    elements.push({ 
+        title: "What did you think about the position of the query history widget in terms of helping you with the task?",
+        name: "pragmatic3",
+        type: "rating",
+        isRequired: true,
+        minRateDescription: "Inefficient",
+        maxRateDescription: "Efficient"
+    });
+    elements.push({ 
+        title: "Did you get confused by the query history widget?",
+        name: "pragmatic3",
+        type: "rating",
+        isRequired: true,
+        minRateDescription: "Confusing",
+        maxRateDescription: "Clear"
+    });
+
     elements.push({
         title: "Do you have any specific comment on the query history widget?",
         name: "query-widget-opinion",
