@@ -143,13 +143,13 @@ const formData = function() {
         
         
         <p>For this study, we ask you to identify, or <em>mark</em> some documents that you think are relevant to the 
-        topic described above. You are permitted to mark at most Y documents.
+        topic described above. You are permitted to mark at most 6 documents.
          The more relevant documents that you identify, the more likely you are to receive a bonus.</p>
 
          <p> <strong>Mark documents that you think are relevant by clicking on the yellow flag next to a
           document's title.</strong> This flag acts as a toggle: one click marks the document, a further click unmarks it. </p>
 
-          <p>Remembering that you can only select a total of Y documents, you may find that you want to unmark a previously marked document. This can be done by re-issuing previous queries using either the search box, or the <em>Recent queries</em> box. 
+          <p>Remembering that you can only select a total of 6 documents, you may find that you want to unmark a previously marked document. This can be done by re-issuing previous queries using either the search box, or the <em>Recent queries</em> box. 
           Once you find the document you wish to unmark, simply click the flag next to its title.
 
         
