@@ -140,6 +140,13 @@ const formData = function() {
         search result and consider based on the snippet whether the document contains 
         information about the topic of <b>wildlife extinction</b>.
         
+        
+        <p>We will be giving bonuses to the participants that identify the 
+most <b>relevant</b> documents, <i>but only those</i>. Marking non-relevant documents will therefore 
+hamper your chances of receiving a bonus. Mark a document that you think is relevant by clicking on 
+the yellow flags that will be present to the left of the documents. If you want to de-select a document, 
+click the yellow flag once more!</p>
+        
         <p>We ask you to search for a minimum of 10 minutes. A timer on the right-hand corner of the
         screen will help you to keep track of time. After 10 minutes, when you are satisfied, you can click on the 
         <span style="background-color: #00A6D3"><font color="white">To Final Test</span></font>
