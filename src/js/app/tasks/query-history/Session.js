@@ -68,6 +68,8 @@ class Session extends React.PureComponent {
     }
 
     startLogUI() {
+        console.log("VARIANT IS");
+        console.log(localStorage.getItem("variant"));
         let configurationObject = {
             logUIConfiguration: {
                 endpoint: 'ws://logui.ewi.tudelft.nl/ws/endpoint/',
