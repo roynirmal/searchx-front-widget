@@ -30,7 +30,7 @@ class Form extends React.PureComponent {
 
         let survey = new Survey.Model(this.props.formData);
         survey.completedHtml = `<div class='message'>${survey.completedHtml}</div>`;
-
+        
         return (
             <FormContainer>
                 <div onPaste={this.handleCutCopyPaste} onCut={this.handleCutCopyPaste} onCopy={this.handleCutCopyPaste}>
@@ -53,7 +53,8 @@ class Form extends React.PureComponent {
 
     handleComplete(res) {
         this.props.onComplete(res.data);
-        
+        // res.preventDefault();
+        console.log(res)
         document.removeEventListener("visibilitychange", this.handleVisibilityChange);
     }
 

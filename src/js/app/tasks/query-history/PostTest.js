@@ -9,146 +9,122 @@ import SyncStore from "../../../stores/SyncStore";
 import SearchStore from "../../search/SearchStore";
 import SearchResultsContainer from "../../search/results/SearchResultsContainer";
 import SearchActions from '../../../actions/SearchActions';
-import QueryHistoryContainer from "../../search/features/queryhistory/QueryHistoryContainer";
-import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
+// import QueryHistoryContainer from "../../search/features/queryhistory/QueryHistoryContainer";
+// import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 
 
 class PostTest extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            finished: localStorage.getItem('posttest-finish') === 'true',
-            activeDoctext: SearchStore.getActiveDoctext(),
-            searchState: SearchStore.getSearchState(),
-        progress: SearchStore.getSearchProgress(),
-        serpId: SearchStore.getSerpId(),
-        activeUrl: SearchStore.getActiveUrl(),
-        test: true
-        };
+        // this.state = {
+        //     finished: localStorage.getItem('posttest-finish') === 'true',
+        //     // activeDoctext: SearchStore.getActiveDoctext(),
+        //     // searchState: SearchStore.getSearchState(),
+        // // progress: SearchStore.getSearchProgress(),
+        // // serpId: SearchStore.getSerpId(),
+        // // activeUrl: SearchStore.getActiveUrl()
+        // // test: true
+        // };
 
         this.onComplete = this.onComplete.bind(this);
-        this.onSwitchPage = this.onSwitchPage.bind(this);
-        this.onLeave = this.onLeave.bind(this);
+        // this.onSwitchPage = this.onSwitchPage.bind(this);
+        // this.onLeave = this.onLeave.bind(this);
     }
-    documentCloseHandler() {
-        SearchActions.closeUrl();
-    }
+    // documentCloseHandler() {
+    //     SearchActions.closeUrl();
+    // }
 
     render() {
-        const task = AccountStore.getTask();
-
-        window.globalPage=1;
-        function keepMePosted(){
-            var els = document.getElementsByClassName('btn-green');
-            var hideme = document.getElementById("hideme");
-            Array.prototype.forEach.call(els, function(el) {
-                if (el.value === "Next" || el.value === "Previous") {
-                    el.onclick=function(){
-                        window.globalPage=window.globalPage===1?2:1;		
-                    }
-            }
-            });
-            if (hideme!=null){
-                if (window.globalPage===1){
-                    hideme.style.display="none";
-                } else {
-                    hideme.style.display="block";
-                }
-            }
-            setTimeout(keepMePosted, 200);
-        }
-        setTimeout(keepMePosted, 2000);
-        
-        localStorage.setItem("post-test", 1);
-        return (
-        <div className="Form">
-        <Form
-            formData={formData(task.data.topics)}
-            formValidation={formValidation}
-            onSwitchPage={this.onSwitchPage}
+        // resolutionCheck();
+        return <Form
+            formData={formData()}
             onComplete={this.onComplete}
-            onLeave={this.onLeave}
-            disableCopy={true}
-        />
-                        <div className="SearchResultsContainer">
-                            <SearchResultsContainer/>
-                        </div>
-        {/* <div className="Side"> */}
-        {/* <QueryHistoryContainer collaborative={this.props.collaborative} test={this.state.test}/> */}
-        {/* </div>  */}
-        </div>
-        )
+        /> 
+
     }
 
     ////
 
     onComplete(data) {
+        console.log(data)
+        // e.preventDefault();
         log(LoggerEventTypes.SURVEY_POST_TEST_RESULTS, {
             data: data
         });
 
-        localStorage.setItem('posttest-finish', true.toString());
+        // localStorage.setItem('posttest-finish', true.toString());
         this.setState({ finished :true});
-    }
-    onLeave() {
-        log(LoggerEventTypes.SURVEY_EXIT, {
-            step : "postest",
-            state : this.state
+                console.log(data)
+        log(LoggerEventTypes.SURVEY_REGISTER_RESULTS, {
+            data: data
         });
-
-        SyncStore.emitSyncLeave();
-        AccountStore.clearUserData();
+        SyncStore.emitSyncSubmit(data);
+        this.props.history.push('/qhw/submission');
     }
-    onSwitchPage() {
-        let switchTabs = localStorage.getItem("switch-tabs-pretest") || 0;
-        switchTabs++;
-        localStorage.setItem("switch-tabs-pretest", switchTabs);
-        log(LoggerEventTypes.TAB_CHANGE, {
-            step: "postest",
-            switch: switchTabs
-        });
+//     onLeave() {
+//         log(LoggerEventTypes.SURVEY_EXIT, {
+//             step : "postest",
+//             state : this.state
+//         });
 
-        if (switchTabs >= constants.switchPageLimit) {
-            this.onLeave();
-            localStorage.setItem("invalid-user",1);
-            this.props.history.push('/disq');
-            localStorage.removeItem("switch-tabs-pretest");
+//         SyncStore.emitSyncLeave();
+//         AccountStore.clearUserData();
+//     }
+//     onSwitchPage() {
+//         let switchTabs = localStorage.getItem("switch-tabs-pretest") || 0;
+//         switchTabs++;
+//         localStorage.setItem("switch-tabs-pretest", switchTabs);
+//         log(LoggerEventTypes.TAB_CHANGE, {
+//             step: "postest",
+//             switch: switchTabs
+//         });
 
-            Alert.error('You have been disqualified from the study.', {
-                position: 'top-right',
-                effect: 'scale',
-                beep: true,
-                timeout: "none"
-            });
-        } else {
-            Alert.error('We have noticed that you have tried to change to a different window/tab. Please, focus on completing the test.', {
-                position: 'top-right',
-                effect: 'scale',
-                beep: true,
-                timeout: "none"
-            });
+//         if (switchTabs >= constants.switchPageLimit) {
+//             this.onLeave();
+//             localStorage.setItem("invalid-user",1);
+//             this.props.history.push('/disq');
+//             localStorage.removeItem("switch-tabs-pretest");
 
-            Alert.warning(`Remember that more than ${constants.switchPageLimit} tab changes result in a disqualification. So far you have changed tabs ${switchTabs} time(s)`, {
-                position: 'top-right',
-                effect: 'scale',
-                beep: true,
-                timeout: "none"
-            });
-        }
-    }
+//             Alert.error('You have been disqualified from the study.', {
+//                 position: 'top-right',
+//                 effect: 'scale',
+//                 beep: true,
+//                 timeout: "none"
+//             });
+//         } else {
+//             Alert.error('We have noticed that you have tried to change to a different window/tab. Please, focus on completing the test.', {
+//                 position: 'top-right',
+//                 effect: 'scale',
+//                 beep: true,
+//                 timeout: "none"
+//             });
+
+//             Alert.warning(`Remember that more than ${constants.switchPageLimit} tab changes result in a disqualification. So far you have changed tabs ${switchTabs} time(s)`, {
+//                 position: 'top-right',
+//                 effect: 'scale',
+//                 beep: true,
+//                 timeout: "none"
+//             });
+//         }
+//     }
 }
 
 const formValidation = function(sender, question) {
-    console.log(sender, question);
-    return true;
+    if (question.name === 'summary') {	
+        const text = question.value;	
+        const c = text.split(" ").length;	
+        if (c < 100) {	
+            question.error = "You have written only " + c + " words, you need to write at least 100 words to complete the exercises.";	
+        }	
+    }
 };
 
-const formData = function(topic) {
+const formData = function() {
     let pages = [];
     let elements = [];
 
     ////
-    elements = [];
+    // elements = [];
 
     elements.push({
         type: "html",
@@ -193,7 +169,7 @@ const formData = function(topic) {
     });
     elements.push({ 
         title: "Did you get confused by the query history widget?",
-        name: "pragmatic3",
+        name: "pragmatic4",
         type: "rating",
         isRequired: true,
         minRateDescription: "Confusing",

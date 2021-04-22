@@ -1,7 +1,7 @@
 import React from "react";
 
 
-class Disqualified extends React.Component {
+class QHWDisqualified extends React.Component {
     render() {
         return (
         <div className='message'>
@@ -11,4 +11,4 @@ class Disqualified extends React.Component {
     }
 };
 
-export default Disqualified;
+export default QHWDisqualified;

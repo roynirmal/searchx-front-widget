@@ -25,6 +25,7 @@ class Register extends React.Component {
     ////
 
     onComplete(data) {
+        console.log(data)
         log(LoggerEventTypes.SURVEY_REGISTER_RESULTS, {
             data: data
         });

@@ -41,6 +41,8 @@ import QHWRegister from './tasks/query-history/Register';
 import QHWDisqualified from './tasks/query-history/Disqualified';
 import QHWPostTest from './tasks/query-history/PostTest';
 import QHWSession from './tasks/query-history/Session';
+import QHWSubmission from './tasks/query-history/Submission';
+
 
 
 
@@ -124,6 +126,8 @@ export class App extends React.Component {
                     <Route exact path="/sync/intermediatetest" component={SyncIntermediateTests}/>
                     <Route exact path="/qhw/posttest" component={QHWPostTest}/>
                     <Route path="/qhw/session" component={QHWSession}/>
+                    <Route path="/qhw/submission" component={QHWSubmission}/>
+                    {/* <Route path="/qhw/disqualified" component={QHWSubmission}/> */}
 
                     <Route exact path="/covidnosearch" component={CovidNoSearchRegister}/>
                     <Route exact path="/disq" component={CovidNoSearchDisqualified}/>
