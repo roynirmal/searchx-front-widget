@@ -68,8 +68,12 @@ class Session extends React.PureComponent {
     }
 
     startLogUI() {
-        console.log("VARIANT IS");
-        console.log(localStorage.getItem("variant"));
+        let currentVariant = localStorage.getItem("variant");
+        
+        if (!currentVariant) {
+            currentVariant = 'unknown';
+        }
+
         let configurationObject = {
             logUIConfiguration: {
                 endpoint: 'ws://logui.ewi.tudelft.nl/ws/endpoint/',
@@ -91,6 +95,7 @@ class Session extends React.PureComponent {
             applicationSpecificData: {
                 userId: AccountStore.getUserId(),
                 groupId: AccountStore.getGroupId(),
+                variant: currentVariant,
             },
             trackingConfiguration: {
                 // Form and query box
