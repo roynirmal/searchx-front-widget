@@ -285,6 +285,44 @@ const formData = function() {
         ]
     });
 
+    elements.push({
+        title: "What is your prior knowledge on the topic?",
+        name: "prior",
+        type: "rating",
+        isRequired: true,
+        minRateDescription: "Low",
+        maxRateDescription: "High",
+        rateValues: [1,2,3,4,5,6,7]
+    });
+    elements.push({
+        title: "What do you think is the relevance of the topic to your life?",
+        name: "relevance",
+        type: "rating",
+        isRequired: true,
+        minRateDescription: "Low",
+        maxRateDescription: "High",
+        rateValues: [1,2,3,4,5,6,7]
+    });
+
+    elements.push({
+        title: "How much interest do you have to search about the topic?",
+        name: "interest",
+        type: "rating",
+        isRequired: true,
+        minRateDescription: "Low",
+        maxRateDescription: "High",
+        rateValues: [1,2,3,4,5,6,7]
+    });
+    elements.push({
+        title: "What do you think will be the difficulty level to come up with queries to search for this topic?",
+        name: "difficulty",
+        type: "rating",
+        isRequired: true,
+        minRateDescription: "Low",
+        maxRateDescription: "High",
+        rateValues: [1,2,3,4,5,6,7]
+    });
+
     pages.push({elements:  elements});
 
     return {

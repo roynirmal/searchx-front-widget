@@ -141,7 +141,8 @@ const formData = function() {
         type: "rating",
         isRequired: true,
         minRateDescription: "Unexpected",
-        maxRateDescription: "Expected"
+        maxRateDescription: "Expected",
+        rateValues: [1,2,3,4,5,6,7]
     });
     elements.push({ 
         title: "Did the query history widget support you in your task?",
@@ -149,7 +150,8 @@ const formData = function() {
         type: "rating",
         isRequired: true,
         minRateDescription: "Obstructive",
-        maxRateDescription: "Supportive"
+        maxRateDescription: "Supportive",
+        rateValues: [1,2,3,4,5,6,7]
     });
     elements.push({ 
         title: "Was the query history widget easy to use?",
@@ -157,7 +159,8 @@ const formData = function() {
         type: "rating",
         isRequired: true,
         minRateDescription: "Complicated",
-        maxRateDescription: "Easy"
+        maxRateDescription: "Easy",
+        rateValues: [1,2,3,4,5,6,7]
     });
     elements.push({ 
         title: "What did you think about the position of the query history widget in terms of helping you with the task?",
@@ -165,7 +168,8 @@ const formData = function() {
         type: "rating",
         isRequired: true,
         minRateDescription: "Inefficient",
-        maxRateDescription: "Efficient"
+        maxRateDescription: "Efficient",
+        rateValues: [1,2,3,4,5,6,7]
     });
     elements.push({ 
         title: "Did you get confused by the query history widget?",
@@ -173,7 +177,8 @@ const formData = function() {
         type: "rating",
         isRequired: true,
         minRateDescription: "Confusing",
-        maxRateDescription: "Clear"
+        maxRateDescription: "Clear",
+        rateValues: [1,2,3,4,5,6,7]
     });
 
     elements.push({
@@ -191,7 +196,8 @@ const formData = function() {
         type: "rating",
         isRequired: true,
         minRateDescription: "Disagree",
-        maxRateDescription: "Agree"
+        maxRateDescription: "Agree",
+        rateValues: [1,2,3,4,5,6,7]
     });
 
     elements.push({
@@ -200,7 +206,8 @@ const formData = function() {
         type: "rating",
         isRequired: true,
         minRateDescription: "Disagree",
-        maxRateDescription: "Agree"
+        maxRateDescription: "Agree",
+        rateValues: [1,2,3,4,5,6,7]
     });
 
     elements.push({
@@ -209,7 +216,8 @@ const formData = function() {
         type: "rating",
         isRequired: true,
         minRateDescription: "Very easy",
-        maxRateDescription: "Very difficult"
+        maxRateDescription: "Very difficult",
+        rateValues: [1,2,3,4,5,6,7]
     });
 
     elements.push({
