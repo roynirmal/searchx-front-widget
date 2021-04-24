@@ -77,7 +77,7 @@ class Session extends React.PureComponent {
         let configurationObject = {
             logUIConfiguration: {
                 endpoint: 'ws://logui.ewi.tudelft.nl/ws/endpoint/',
-                authorisationToken: 'eyJ0eXBlIjoibG9nVUktYXV0aG9yaXNhdGlvbi1vYmplY3QiLCJhcHBsaWNhdGlvbklEIjoiZTM4NmQyMjEtMWI0NS00ODFkLWJkM2EtZWY5ZDI2NzllNjBiIiwiZmxpZ2h0SUQiOiI0MjQ2ZjU0Ny1lMjI5LTRmNTgtYTViMS1kOGFkN2MzZTBlNDIifQ:1laNda:5alTw9mwycKHAtxDlB0acfvYez8dZ6TlFbxpzUCFle0',
+                authorisationToken: 'eyJ0eXBlIjoibG9nVUktYXV0aG9yaXNhdGlvbi1vYmplY3QiLCJhcHBsaWNhdGlvbklEIjoiZTM4NmQyMjEtMWI0NS00ODFkLWJkM2EtZWY5ZDI2NzllNjBiIiwiZmxpZ2h0SUQiOiIxNTM0OWQ3NC0xZDEzLTQ2ZDgtYWNkNy05NzJhODJmMzA5ZGIifQ:1laPdu:DTwBBk7FS4TDLKE3AGuQsSUPVrlOsWwF4L1Fqx8QifE',
                 verbose: false,
 
                 browserEvents: {
