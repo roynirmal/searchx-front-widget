@@ -94,8 +94,15 @@ class Session extends React.PureComponent {
                 // Form and query box
                 'query-box-hoverin': {
                     selector: 'form input',
-                    event: 'mouseenter',
-                    name: 'QUERY_BOX_MOUSE_ENTER',
+                    event: 'mouseHover',
+                    properties: {
+                        mouseenter: {
+                            name: 'QUERY_BOX_MOUSE_ENTER',
+                        },
+                        mouseleave: {
+                            name: 'QUERY_BOX_MOUSE_LEAVE',
+                        }
+                    },
                 },
 
                 'query-box-focus': {
