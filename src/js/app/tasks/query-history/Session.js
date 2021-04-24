@@ -72,7 +72,7 @@ class Session extends React.PureComponent {
             logUIConfiguration: {
                 endpoint: 'ws://logui.ewi.tudelft.nl/ws/endpoint/',
                 authorisationToken: 'eyJ0eXBlIjoibG9nVUktYXV0aG9yaXNhdGlvbi1vYmplY3QiLCJhcHBsaWNhdGlvbklEIjoiNjg2OGRkZDEtODNhYy00NTJlLTk2ZDEtNjJkZDg5OWJlNTUzIiwiZmxpZ2h0SUQiOiI0NWJlNGFkNS0yNDQ0LTRlOTItYTA0My05ZmQ0YmZhYWI4ZmUifQ:1laEEG:kOaG7CapYw-boHHbNjJTmiJ0qMnlkmTQo4uuKkmGuJ8',
-                verbose: true,
+                verbose: false,
 
                 browserEvents: {
                     blockEventBubbling: true,
